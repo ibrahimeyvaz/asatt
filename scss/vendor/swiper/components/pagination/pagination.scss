@@ -1,0 +1,176 @@
+.swiper-pagination {
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+  width: 4rem;
+
+  &.swiper-pagination-hidden {
+    opacity: 0;
+  }
+}
+
+/* Common Styles */
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+  margin-top: 1rem;
+}
+
+/* Bullets */
+.swiper-pagination-bullets-dynamic {
+  overflow: hidden;
+  font-size: 0;
+
+  .swiper-pagination-bullet {
+    transform: scale(0.33);
+    position: relative;
+  }
+
+  .swiper-pagination-bullet-active {
+    transform: scale(1);
+  }
+
+  .swiper-pagination-bullet-active-main {
+    transform: scale(1);
+  }
+
+  .swiper-pagination-bullet-active-prev {
+    transform: scale(0.66);
+  }
+
+  .swiper-pagination-bullet-active-prev-prev {
+    transform: scale(0.33);
+  }
+
+  .swiper-pagination-bullet-active-next {
+    transform: scale(0.66);
+  }
+
+  .swiper-pagination-bullet-active-next-next {
+    transform: scale(0.33);
+  }
+}
+
+.swiper-pagination-bullet {
+  @include transitionSlow();
+  width: 1.5rem;
+  height: 1.5rem;
+  background: transparent;
+  border: 2px solid $primary-color;
+  @at-root button#{&} {
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    appearance: none;
+  }
+  .swiper-pagination-clickable & {
+    cursor: pointer;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: $primary-color;
+}
+
+.swiper-pagination-bullets {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  bottom: 10rem;
+  transform: translate3d(-50%, 0%, 0);
+
+  .swiper-pagination-bullet {
+    margin: 0 .5rem;
+    display: inline-block;
+  }
+
+  &.swiper-pagination-bullets-dynamic {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+
+    .swiper-pagination-bullet {
+      display: inline-block;
+      transition: 200ms transform, 200ms top;
+    }
+  }
+}
+
+.swiper-container-horizontal {
+  > .swiper-pagination-bullets {
+    .swiper-pagination-bullet {
+
+    }
+
+    &.swiper-pagination-bullets-dynamic {
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+
+      .swiper-pagination-bullet {
+        transition: 200ms transform, 200ms left;
+      }
+    }
+  }
+
+  &.swiper-container-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+    transition: 200ms transform, 200ms right;
+  }
+}
+
+/* Progress */
+.swiper-pagination-progressbar {
+  background: rgba(0, 0, 0, 0.25);
+  position: absolute;
+
+  .swiper-pagination-progressbar-fill {
+    background: $themeColor;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: scale(0);
+    transform-origin: left top;
+  }
+
+  .swiper-container-rtl & .swiper-pagination-progressbar-fill {
+    transform-origin: right top;
+  }
+
+  .swiper-container-horizontal > &,
+  .swiper-container-vertical > &.swiper-pagination-progressbar-opposite {
+    height: 4px;
+    left: 0;
+    top: 0;
+  }
+
+  .swiper-container-vertical > &,
+  .swiper-container-horizontal > &.swiper-pagination-progressbar-opposite {
+    width: 4px;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+
+@each $paginationColorName, $paginationColorValue in $colors {
+  .swiper-pagination-#{$paginationColorName} .swiper-pagination-bullet-active {
+    background: $paginationColorValue;
+  }
+  .swiper-pagination-progressbar.swiper-pagination-#{$paginationColorName} {
+    background: rgba($paginationColorValue, 0.25);
+
+    .swiper-pagination-progressbar-fill {
+      background: $paginationColorValue;
+    }
+  }
+}
+
+.swiper-pagination-lock {
+  display: none;
+}

@@ -1,0 +1,53 @@
+// Colors
+
+$black: #202020;
+$off-black: #1A1A1A;
+$off-black-light: lighten($off-black, 2%);
+$dark-grey: #3C3C3B;
+$light-black: #2d2d2d;
+$gray: #707070;
+$gray-light: #E6E6E6;
+
+$off-white: #F7F7F7;
+$off-white-alternate: #F5F5F5;
+$white: #FFF;
+$yellow: #f9b621;
+$blue: #2567ce;
+$bluealternate: #0D63AB;
+$darkblue: #202933;
+$lighterblue: #191C36;
+$red: #CE313A;
+$darkred: #AA1919;
+$pinkred: #EA4F56;
+$text-color: $light-black;
+$text-color-dark: $dark-grey;
+$tumbleweed: #F5EEE8;
+$gold: #c5ab6b;
+$green: #91B508;
+$green-light: saturate($green, 10%);
+$seagreen : #70bf9a;
+$dark-theme-white: #cbcbcb;
+$seablue: #0b4375;
+$light-blue: #F4FAFF;
+
+
+$primary-color: $blue;
+$primary-color-light: lighten($primary-color, 5%);
+$primary-color-dark: saturate(darken($primary-color, 10%), 5%);
+$primary-color-lightest: lighten($primary-color, 30%);
+
+$facebook: #3b5998;
+$linkedin: #0077b5;
+$instagram: #c13584;
+$whatsapp: #25D366;
+
+$secondary-color: $gray;
+$secondary-color-light: lighten($secondary-color, 5%);
+$secondary-color-lightest: lighten($secondary-color, 10%);
+$secondary-color-dark: darken($secondary-color, 5%);
+
+
+// Fonts
+
+$primary-font: 'Poppins', sans-serif;
+$secondary-font: $primary-font;

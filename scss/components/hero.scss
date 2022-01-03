@@ -1,0 +1,188 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  @include media-breakpoint-down(md) {
+    height: auto;
+  }
+
+  .hero-inner {
+    height: 100%;
+
+
+    .row {
+      height: 100%;
+
+      > div[class*="col-"] {
+        height: 100%;
+      }
+    }
+  }
+
+  .hero-visual {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: $primary-color;
+    @include media-breakpoint-down(md) {
+      height: 50rem;
+    }
+    @include media-breakpoint-down(sm) {
+      height: 30rem;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 25%;
+      position: absolute;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .5) 110%);
+      z-index: 1;
+      top: 0;
+      left: 0;
+      @include media-breakpoint-down(md) {
+        height: 45%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .9) 110%);
+      }
+    }
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .hero-content-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-content {
+    background-color: $white;
+    position: relative;
+    padding: 10rem 5rem;
+    z-index: 100;
+    text-align: right;
+    @include media-breakpoint-down(md) {
+      left: 0;
+      min-width: 100%;
+      padding: 5rem;
+      position: static;
+    }
+
+    .hero-content--headline {
+      font-size: 7rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      @include media-breakpoint-down(md) {
+        font-size: 2.4rem;
+      }
+
+      .content-headline-highlight {
+        color: $primary-color;
+        padding: 1rem;
+
+        &:hover, &:focus {
+          background-color: $primary-color;
+          color: white;
+        }
+      }
+    }
+
+    .hero-content--author {
+      color: $primary-color;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  }
+
+  .hero-cta {
+    position: absolute;
+    width: 80%;
+    background-color: $primary-color;
+    text-align: right;
+    left: 0;
+    bottom: 10vh;
+
+    a {
+      display: inline-block;
+      padding: 3rem 6rem;
+      color: rgba(white, .9);
+      font-size: 2.6rem;
+      font-weight: 300;
+
+      &:hover, &:focus {
+        color: white;
+      }
+    }
+  }
+
+  &.hero-page {
+    height: 50rem;
+    @include media-breakpoint-down(md) {
+      height: auto;
+    }
+
+    .hero-visual {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+
+      img {
+        object-position: bottom;
+      }
+
+      &:before {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .9) 110%);
+        height: 100%;
+        top: 0;
+      }
+    }
+
+    .hero-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .hero-content {
+        text-align: center;
+        background-color: transparent;
+        top: 7rem;
+
+        .hero-content--tagline {
+          text-transform: uppercase;
+          font-weight: normal;
+          letter-spacing: .3rem;
+          color: white;
+        }
+
+        .hero-content--headline {
+          color: white;
+          font-size: 5rem;
+        }
+
+        .hero-content--activity {
+          padding: 1rem 2rem;
+          background-color: $primary-color;
+          color: white;
+
+          .activity-category {
+            display: block;
+            margin-bottom: 1rem;
+          }
+
+          a {
+            color: white;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}

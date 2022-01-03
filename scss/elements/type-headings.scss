@@ -1,0 +1,83 @@
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  padding: 0;
+  color: $text-color;
+  font-family: $secondary-font;
+  line-height: 110%;
+  font-weight: 600;
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+    font-weight: inherit;
+
+    &:hover, &:focus {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 0;
+    }
+  }
+}
+
+h1, .h1 {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+  color: $text-color;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 3rem;
+    line-height: normal;
+  }
+
+  strong {
+    color: $primary-color;
+
+    &:last-of-type {
+      color: $secondary-color;
+    }
+  }
+}
+
+h2, .h2 {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+  color: $text-color;
+  @include media-breakpoint-down(xl) {
+    line-height: normal;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 3rem;
+  }
+
+  strong {
+    color: $primary-color;
+  }
+}
+
+h3, .h3 {
+  font-size: 2.4rem;
+  @include media-breakpoint-down(xl) {
+    font-size: 2.4rem;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 1.8rem;
+  }
+}
+
+h4, .h4 {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.7rem;
+  }
+}
+
+h5, .h5 {
+  font-size: 2rem;
+}
+
+h6, .h6 {
+  font-size: 1.8rem;
+}

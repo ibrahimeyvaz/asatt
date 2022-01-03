@@ -1,0 +1,77 @@
+.services {
+  padding: 10rem;
+  overflow: hidden;
+  @include media-breakpoint-down(sm) {
+    padding: 3rem;
+  }
+
+  .services-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    grid-gap: 10rem;
+    position: relative;
+    @include media-breakpoint-down(sm) {
+      display: flex;
+      flex-flow: column;
+      grid-gap: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 1px;
+      background-color: $primary-color;
+      left: 50%;
+      transform: translateX(calc(-50% + 2.5rem));
+      position: absolute;
+      top: 0;
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 120%;
+      left: -10%;
+      background-color: $primary-color;
+      top: 50%;
+      transform: translateY(50%);
+      position: absolute;
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    .service-item {
+      display: flex;
+      align-items: center;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 2rem;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+
+      .service-item--icon {
+        width: 8rem;
+        height: 8rem;
+        margin-right: 5rem;
+        @include media-breakpoint-down(sm) {
+          width: 6rem;
+          height: 6rem;
+          margin-right: 3rem;
+        }
+      }
+
+      .service-item--title {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,171 @@
+.button {
+  @include transition();
+  width: auto;
+  background: transparent;
+  color: $primary-color;
+  font-family: $secondary-font;
+  padding: .7rem 2rem;
+  display: inline-block;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 12rem;
+  text-transform: uppercase;
+  @include media-breakpoint-down(sm) {
+    font-size: 1.4rem;
+    min-width: 10rem;
+  }
+
+  &.button--primary {
+    color: $secondary-color;
+    position: relative;
+    border: 1px solid $secondary-color;
+
+    &:hover, &:focus {
+      color: $primary-color;
+    }
+
+    &:active {
+      opacity: 1;
+      transition: none;
+      color: $white;
+      background: $primary-color-dark;
+    }
+
+    &.button--primary-white {
+      color: white;
+      border-color: white;
+
+      &:after {
+        color: white;
+      }
+
+      &:hover, &:focus {
+        color: white;
+
+        &:after {
+          color: white;
+        }
+      }
+    }
+  }
+
+  &.button--secondary {
+    background: $secondary-color;
+    color: $off-black;
+
+    &:hover, &:focus {
+      color: $off-black;
+      background: $secondary-color-dark;
+    }
+
+    &:active {
+      transition: none;
+      color: $off-black;
+      background: $secondary-color-dark;
+    }
+  }
+
+  &.button-lined {
+    background: transparent;
+    border-color: $primary-color;
+    color: $primary-color;
+
+    &:hover, &:focus {
+      background: $primary-color;
+      color: white;
+    }
+
+    &:active {
+      background: $primary-color-light;
+      border-color: $primary-color-light;
+      transition: none;
+    }
+
+    &.button-white {
+      color: white;
+      border-color: white;
+
+      &:hover, &:focus {
+        background: white;
+        color: $primary-color;
+      }
+
+      &:active {
+        transition: none;
+        color: $primary-color-dark;
+      }
+    }
+
+    &.button-dark {
+      color: white;
+      border-color: $secondary-color;
+
+      &:hover, &:focus {
+        background: $secondary-color-light;
+        color: $primary-color;
+      }
+
+      &:active {
+        transition: none;
+        color: white;
+        background: $secondary-color-light;
+      }
+    }
+  }
+
+  & + .button {
+    @include media-breakpoint-down(sm) {
+      // margin-top: 1rem;
+    }
+  }
+
+  &:hover, &:focus {
+    color: $primary-color-dark;
+  }
+
+  &:active {
+    transition: none;
+    color: $primary-color-light;
+  }
+
+  &[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  + .button {
+    margin-left: 1.5rem;
+    @include media-breakpoint-down(sm) {
+      margin-left: 0;
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+.button-arrowed {
+  .arrow-icon {
+    position: relative;
+    top: -1px;
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+  }
+
+  .arrow-icon--circle {
+    transition: stroke-dashoffset .3s ease;
+    stroke-dasharray: 95;
+    stroke-dashoffset: 95;
+  }
+
+  &:hover, &:focus {
+    .arrow-icon {
+      transform: translate3d(.5rem, 0, 0);
+    }
+
+    .arrow-icon--circle {
+      stroke-dashoffset: 0;
+    }
+  }
+}

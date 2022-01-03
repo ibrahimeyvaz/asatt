@@ -1,0 +1,61 @@
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  width: 2rem;
+  height: 2.5rem;
+  margin-top: -1.25rem;
+  z-index: 10;
+  cursor: pointer;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: .8;
+  @include transitionSlow();
+
+  &.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: auto;
+    pointer-events: none;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.swiper-button-prev:hover {
+  transform: translateX(-.1rem);
+}
+
+.swiper-button-next:hover {
+  transform: translateX(.1rem);
+}
+
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+  background-image: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z' fill='#{$primary-color}'/></svg>");
+  left: -5rem;
+  right: auto;
+}
+
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+  background-image: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z' fill='#{$primary-color}'/></svg>");
+  right: -5rem;
+  left: auto;
+}
+
+@each $navColorName, $navColorValue in $colors {
+  .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+    &.swiper-button-#{$navColorName} {
+      background-image: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z' fill='#{$navColorValue}'/></svg>");
+    }
+  }
+  .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    &.swiper-button-#{$navColorName} {
+      background-image: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z' fill='#{$navColorValue}'/></svg>");
+    }
+  }
+}
+
+.swiper-button-lock {
+  display: none;
+}

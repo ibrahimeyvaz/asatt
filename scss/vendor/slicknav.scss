@@ -1,0 +1,161 @@
+.slicknav_nav {
+  ul {
+    display: block;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+//colors
+$color_0: rgba(255, 255, 255, 0.75);
+$color_btn: #222;
+$color_text: #fff;
+$color_bg: $black;
+$color_hover_bg: #ccc;
+$color_hover_text: #222;
+
+.slicknav_menu {
+  position: fixed;
+  @include transitionSlow();
+  width: 100%;
+  background: white;
+  padding: 1rem;
+  justify-content: space-between;
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  top: 0;
+  z-index: 9999;
+  @include boxShadowBig;
+  @include media-breakpoint-down(lg) {
+    display: flex;
+    flex-flow: wrap;
+  }
+}
+
+.slicknav_nav {
+  color: $text-color;
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 600;
+  overflow: hidden;
+  font-family: $secondary-font;
+  @include media-breakpoint-down(xs) {
+    font-size: 1.6rem;
+  }
+
+  li.menu-item {
+    border-bottom: 1px solid $gray-light;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      padding: 1.5rem 2.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: $dark-grey;
+      text-transform: lowercase;
+
+      &:hover, &:focus {
+        background: $primary-color;
+        color: white;
+
+        a {
+          color: white;
+        }
+      }
+
+      &[aria-current="page"] {
+        background: $primary-color;
+        color: white;
+
+        .slicknav_arrow {
+          background: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' width='6' height='3' viewBox='0 0 6 3'><path d='M3,0,6,3H0Z' transform='translate(6 3) rotate(180)' fill='white'/></svg>");
+          background-repeat: no-repeat;
+          background-size: 1.5rem;
+          background-position: center;
+        }
+      }
+    }
+
+    .slicknav_row {
+      display: flex;
+      padding: 0;
+      flex-flow: wrap;
+      justify-content: space-between;
+      position: relative;
+      min-height: 4rem;
+
+      > a {
+        flex-basis: calc(100% - 5rem);
+      }
+
+      .slicknav_arrow {
+        @include transition();
+        margin-left: auto;
+        text-indent: -9999px;
+        height: 5rem;
+        width: 5rem;
+        background: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' width='6' height='3' viewBox='0 0 6 3'><path d='M3,0,6,3H0Z' transform='translate(6 3) rotate(180)' fill='#{$primary-color}'/></svg>");
+        background-repeat: no-repeat;
+        background-size: 1.5rem;
+        background-position: center;
+
+        &:focus, &:hover {
+          transform: rotate(90deg);
+          background: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' width='6' height='3' viewBox='0 0 6 3'><path d='M3,0,6,3H0Z' transform='translate(6 3) rotate(180)' fill='white'/></svg>");
+          background-repeat: no-repeat;
+          background-size: 1.5rem;
+          background-position: center;
+        }
+      }
+
+      + .sub-menu {
+        margin-top: 1rem;
+        font-size: 1.6rem;
+        padding: 2rem;
+        background: $off-white;
+
+        > a {
+          flex-basis: calc(100% - 4rem);
+        }
+
+        .slicknav_arrow {
+          width: 4rem;
+          height: 4rem;
+        }
+
+        li {
+          border-color: $gray-light;
+
+          a {
+            font-size: 1.6rem;
+            padding: 1rem;
+          }
+
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.slicknav_brand {
+  a {
+    text-indent: -9999px;
+    height: 5rem;
+    width: 17rem;
+    display: block;
+    background: url("images/asatt-logo-mobile.svg") no-repeat center;
+    background-size: contain;
+  }
+}

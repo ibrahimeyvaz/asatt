@@ -1,0 +1,29 @@
+a {
+  color: $text-color;
+  text-decoration: none !important;
+  font-weight: 600;
+  @include transition();
+
+  &:hover, &:focus {
+    color: $primary-color;
+  }
+
+  &:active {
+    color: $secondary-color;
+    transition: none;
+  }
+
+  strong {
+    font-weight: bold;
+    color: $primary-color;
+
+    &:hover, &:focus {
+      color: $primary-color-light;
+    }
+
+    &:active {
+      color: $secondary-color;
+      transition: none;
+    }
+  }
+}

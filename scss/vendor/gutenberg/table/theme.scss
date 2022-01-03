@@ -1,0 +1,12 @@
+.wp-block-table {
+  width: auto;
+  min-width: $break-mobile / 2;
+  border-collapse: collapse;
+
+  td,
+  th {
+    padding: 1rem;
+    border: 0;
+    word-break: break-all;
+  }
+}

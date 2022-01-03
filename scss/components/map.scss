@@ -1,0 +1,31 @@
+#map {
+  height: 60rem;
+  margin-left: -3rem;
+  margin-right: -3rem;
+  margin-top: -3rem;
+  width: calc(100% + 6rem);
+  @include media-breakpoint-down(lg) {
+    height: 30rem;
+  }
+
+  .window-content {
+    text-align: center;
+
+    .window-title {
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    strong {
+      font-family: $secondary-font;
+      color: $primary-color;
+    }
+  }
+
+  &.activity-map {
+    height: 30rem;
+    margin-bottom: 5rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,144 @@
+.main-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: wrap;
+  padding: 4rem;
+  z-index: 9998;
+  @include media-breakpoint-down(sm) {
+    padding: 2rem;
+  }
+
+  .main-branding {
+    width: 20rem;
+    position: relative;
+    @include media-breakpoint-down(sm) {
+      width: 15rem;
+    }
+
+    .main-branding--logo {
+      width: 100%;
+      height: 100%;
+      @include transition;
+    }
+
+    .main-branding--text {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+      bottom: -1rem;
+      width: 100%;
+      @include transition;
+    }
+
+    &:hover {
+      .main-branding--logo{
+        transform: translateY(-1.5rem);
+      }
+
+      .main-branding--text {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(.5rem);
+      }
+    }
+  }
+
+  .main-header-right {
+    margin-left: auto;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+  }
+
+  .navigation-trigger-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .navigation-trigger {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      flex-direction: column;
+      position: relative;
+      transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: scale(.7, .7);
+
+      .circle {
+        width: 12px;
+        height: 12px;
+        margin: 3px;
+        background: $primary-color;
+        border-radius: 50%;
+        display: block;
+        transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        &:nth-child(4),
+        &:nth-child(5) {
+          position: absolute;
+          opacity: 0;
+          top: 50%;
+          margin-top: -6px;
+          left: 50%;
+        }
+
+        &:nth-child(4) {
+          margin-left: -25px;
+        }
+
+        &:nth-child(5) {
+          margin-left: 13px;
+        }
+      }
+
+      &:hover, &:focus, &.active {
+        transform: scale(.7, .7) rotate(45deg);
+
+        .circle {
+          opacity: 1;
+        }
+      }
+
+      &.active {
+        .circle {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  &.main-header--page {
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: $primary-color;
+      z-index: -1;
+      @include transition;
+    }
+
+    .navigation-trigger .circle {
+      background-color: white;
+    }
+  }
+}
+
+.no-scroll .main-header--page:after {
+  transform: translateY(-100%);
+}

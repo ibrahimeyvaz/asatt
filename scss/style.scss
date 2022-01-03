@@ -1,0 +1,55 @@
+/*
+Theme Name: ASATT
+Theme URI: https://www.reign.agency
+Author: Reign Agency | Expand your business
+Author URI: https://www.reign.agency
+*/
+
+// Settings
+
+
+@import "settings/variables",
+        "settings/mixins",
+        "settings/fonts";
+
+// Bootstrap
+@import "vendor/bootstrap/bootstrap",
+        "vendor/swiper/swiper";
+
+// Vendor
+
+@import "vendor/jquery.fancybox",
+        "vendor/ninja-forms/st-default",
+        "vendor/cookie",
+        "vendor/gutenberg/style";
+
+// Elements
+
+@import "elements/type-html",
+        "elements/type-body",
+        "elements/type-headings",
+        "elements/type-a",
+        "elements/type-img",
+        "elements/type-button",
+        "elements/type-hr",
+        "elements/type-input",
+        "elements/type-list",
+        "elements/type-p";
+
+// Components
+
+@import "components/header",
+        "components/hero",
+        "components/partners",
+        "components/persons",
+        "components/activities",
+        "components/general",
+        "components/map",
+        "components/leading",
+        "components/main-navigation",
+        "components/side-navigation",
+        "components/services",
+        "components/pagination",
+        "components/footer";
+
+

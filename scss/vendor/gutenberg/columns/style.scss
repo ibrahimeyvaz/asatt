@@ -1,0 +1,64 @@
+.wp-block-columns {
+	display: flex;
+	// Responsiveness: Allow wrapping on mobile.
+	flex-wrap: wrap;
+	margin: 5rem auto;
+	@include media-breakpoint-down(xs){
+		margin: 1rem auto;
+	}
+	@include media-breakpoint-down(xl) {
+		flex-wrap: nowrap;
+	}
+	.wp-block-columns{
+		margin: 0rem auto;
+	}
+}
+
+.wp-block-column {
+	flex-grow: 1;
+	margin-bottom: 1em;
+	// Responsiveness: Show at most one columns on mobile.
+	flex-basis: 100%;
+	// Prevent the columns from growing wider than their distributed sizes.
+	min-width: 0;
+
+	// Prevent long unbroken words from overflowing.
+	word-break: break-word; // For back-compat.
+	overflow-wrap: break-word; // New standard.
+
+	.text-block{
+		width: 100%;
+		align-self: center;
+		@include media-breakpoint-down(sm){
+			text-align: left !important;
+		}
+	}
+
+	@include media-breakpoint-down(xl) {
+
+		// Beyond mobile, allow 2 columns.
+		flex-basis: calc(50% - #{3rem});
+		flex-grow: 0;
+
+		// Add space between the 2 columns. Themes can customize this if they wish to work differently.
+		// Only apply this beyond the mobile breakpoint, as there's only a single column on mobile.
+		&:nth-child(even) {
+			margin-left: 3rem;
+		}
+	}
+
+	@include break-large() {
+
+		// When columns are in a single row, add space before all except the first.
+		&:not(:first-child) {
+			margin-left: 3rem;
+		}
+	}
+	ul:not([class]), li:not([class]){
+		padding-left: 2rem;
+		list-style: disc;
+	}
+	a:not([class]){
+		font-weight: 500;
+	}
+}

@@ -1,0 +1,30 @@
+@mixin alert-variant($background, $border, $color) {
+  color: $color;
+  border: 0;
+  background: $border;
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+
+  a {
+    color: darken($color, 10%);
+
+    &:hover, &:focus {
+      color: lighten($color, 10%);
+    }
+
+    &:active {
+      transition: none;
+      color: saturate($color, 10%)
+    }
+  }
+  .button, .button.wc-forward {
+    background-color: $color;
+    color: white;
+    @include media-breakpoint-down(sm) {
+      display: block;
+      margin: 1rem auto;
+    }
+  }
+}

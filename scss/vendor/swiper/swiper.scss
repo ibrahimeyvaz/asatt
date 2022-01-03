@@ -1,0 +1,17 @@
+@import "functions";
+
+$themeColor: $primary-color !default;
+$colors: (white: #ffffff, black: #000000) !default;
+
+@import "components/core/core",
+        "components/a11y/a11y",
+        "components/effect-fade/effect-fade",
+        "components/lazy/lazy",
+        "components/navigation/navigation",
+        "components/scrollbar/scrollbar",
+        "components/thumbs/thumbs",
+        "components/zoom/zoom",
+        "components/pagination/pagination";
+
+
+//IMPORT_COMPONENTS

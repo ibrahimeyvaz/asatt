@@ -1,0 +1,87 @@
+.wp-block-buttons {
+  display: flex;
+  flex-flow: wrap;
+  @include media-breakpoint-down(sm) {
+    flex-flow: column;
+  }
+
+  .wp-block-button + .wp-block-button .wp-block-button__link {
+    margin-left: 1rem;
+    @include media-breakpoint-down(lg) {
+      margin-left: 0;
+    }
+
+  }
+
+  &.is-content-justification-center {
+    text-align: center;
+    justify-content: center;
+    margin: 2.5rem 0;
+    width: 100%;
+    @include media-breakpoint-down(sm){
+      padding: 1.5rem 0;
+      margin: 1rem 0;
+      flex-flow: column;
+    }
+  }
+}
+
+.wp-block-button {
+
+
+  &.alignright {
+    text-align: right;
+  }
+}
+
+.wp-block-button__link {
+  @include transition();
+  width: auto;
+  background: transparent;
+  font-family: $secondary-font;
+  padding: .7rem 2rem;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 12rem;
+  text-transform: uppercase;
+  color: $secondary-color;
+  position: relative;
+  border: 1px solid $secondary-color;
+
+
+
+  &:hover, &:focus {
+    color: $primary-color;
+
+  }
+
+  &:active {
+    opacity: 1;
+    transition: none;
+    color: $white;
+    background: $primary-color-dark;
+    &:after{
+      color: white;
+    }
+  }
+
+  &.button--primary-white {
+    color: white;
+    border-color: white;
+
+    &:after {
+      color: white;
+    }
+
+    &:hover, &:focus {
+      color: white;
+
+      &:after {
+        color: white;
+      }
+    }
+  }
+}

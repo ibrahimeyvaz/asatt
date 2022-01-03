@@ -1,0 +1,824 @@
+/*
+ * Ninja Forms - Form Display Structure
+ */
+
+.ninja-forms-form-wrap *,
+.ninja-forms-form-wrap *:after,
+.ninja-forms-form-wrap *:before {
+  box-sizing: border-box;
+}
+
+.nf-response-msg {
+  display: none;
+  background: #8fba47;
+  color: $white;
+  text-align: center;
+  padding: 2rem;
+
+  p {
+    margin: 0;
+    color: $white;
+  }
+}
+
+.nf-form-fields-required {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.nf-field-container,
+#ninja_forms_required_items {
+  clear: both;
+  position: relative;
+  margin-bottom: 2rem;
+
+  &.html-container {
+    margin-bottom: 0;
+  }
+
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  &.hidden-container,
+  &.hr-container {
+    margin: 0;
+    height: auto;
+
+    .nf-field-label {
+      display: none;
+    }
+  }
+
+  &.html-container {
+    .nf-field-label {
+      display: none;
+    }
+  }
+}
+
+.nf-field-label {
+  label {
+    font-family: $secondary-font;
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 0;
+    color: $text-color;
+  }
+
+  .listradio-wrap &, .listselect-wrap & {
+    label {
+      color: $primary-color;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.nf-field-element {
+  position: relative;
+
+  ul {
+    li {
+      &:before {
+        display: none !important;
+      }
+    }
+  }
+
+  textarea {
+    height: 15rem;
+  }
+}
+
+.nf-field-description {
+  font-family: $primary-font;
+
+  * {
+    font-family: $primary-font;
+  }
+
+  p:last-child {
+    margin: 0;
+  }
+
+  small, span {
+    font-size: 1.2rem !important;
+    line-height: normal;
+  }
+}
+
+
+.nf-input-limit {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+.nf-static {
+  padding: 0 10px;
+}
+
+.nf-after-field {
+  .nf-error-msg {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    margin-top: .5rem;
+  }
+}
+
+/* ---------------------------------
+CHECKBOX FIELD
+----------------------------------*/
+
+
+/* ---------------------------------
+RADIO & CHECKBOX LISTS
+----------------------------------*/
+
+.list-radio-wrap,
+.list-checkbox-wrap {
+  .nf-field-element {
+    ul, li {
+      display: flex;
+      flex-flow: wrap;
+      list-style: none !important;
+      margin: 0 !important;
+      justify-content: flex-start;
+      padding: 0 !important;
+
+      input {
+        margin-right: 5px;
+      }
+    }
+
+    li {
+      flex-basis: 50%;
+      padding-left: 10px;
+      margin: 0 0 5px !important;
+      text-indent: initial !important;
+      @include media-breakpoint-down(sm) {
+        flex-basis: 100%;
+      }
+
+      label {
+        //display: inline;
+        display: block;
+        float: initial;
+        //margin: 0;
+        width: auto;
+        margin-left: 1rem;
+      }
+
+      input {
+        width: auto !important;
+        float: left;
+      }
+    }
+  }
+
+  .single-checkbox & {
+    label {
+      @include media-breakpoint-down(xs) {
+        font-size: 1.2rem;
+        &:before {
+          top: 0;
+          left: -2rem;
+        }
+        &:after {
+          left: -1.5rem;
+          top: .5rem
+        }
+      }
+    }
+  }
+}
+
+.single-checkbox {
+  .list-checkbox-wrap .nf-field-element {
+    li {
+      flex-basis: 100%;
+    }
+  }
+}
+
+/* ---------------------------------
+PRODUCT FIELD
+----------------------------------*/
+.product-wrap {
+  > div {
+    input {
+      width: 80px !important;
+    }
+
+    .nf-product-field {
+      span {
+        padding: 0 5px;
+      }
+    }
+  }
+}
+
+/* ---------------------------------
+STAR RATING
+----------------------------------*/
+.starrating-wrap .star {
+  border-bottom: 0;
+}
+
+/* ---------------------------------
+HONEYPOT
+----------------------------------*/
+
+.nf-form-hp {
+  position: absolute;
+  visibility: hidden;
+}
+
+/* ---------------------------------
+SELECT LIST
+----------------------------------*/
+.list-select-wrap {
+  div div {
+    display: none;
+  }
+}
+
+
+/* ---------------------------------
+COLORS
+As minimal as possible
+----------------------------------*/
+.ninja-forms-req-symbol,
+.nf-error-msg {
+  color: #c8302f;
+}
+
+.nf-error {
+  .ninja-forms-field {
+    border-color: #c8302f;
+  }
+}
+
+.nf-field-submit-error {
+  padding: 15px;
+}
+
+.ninja-forms-noscript-message {
+  background: #f1f1f1;
+  border: 4px dashed #ccc;
+  color: #333;
+  display: block;
+  font-size: 20px;
+  margin: 20px 0;
+  padding: 40px;
+  text-align: center;
+}
+
+/* ---------------------------------
+HELPER CLASSES
+----------------------------------*/
+.two-col-list {
+  ul {
+    li {
+      float: left;
+      width: 50%
+    }
+  }
+}
+
+.three-col-list {
+  ul {
+    li {
+      float: left;
+      width: 33.33%
+    }
+  }
+}
+
+.four-col-list {
+  ul {
+    li {
+      float: left;
+      width: 25%
+    }
+  }
+}
+
+.five-col-list {
+  ul {
+    li {
+      float: left;
+      width: 20%
+    }
+  }
+}
+
+.six-col-list {
+  ul {
+    li {
+      float: left;
+      width: 16.66%
+    }
+  }
+}
+
+
+body {
+  .pika-label {
+    background: transparent;
+  }
+}
+
+
+/* ---------------------------------
+STANDARDIZE ALL FIELDS
+----------------------------------*/
+.field-wrap {
+  display: flex;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 0rem;
+  }
+  //flex-wrap:wrap;
+  > label {
+    display: block;
+  }
+
+  > div input,
+  textarea,
+  select,
+  .pikaday__container,
+  .pikaday__display {
+    width: 100%;
+  }
+
+  > div input[type="checkbox"] {
+    width: auto;
+  }
+
+  input[type="submit"],
+  input[type="button"][value="Verzenden"],
+  input[type="button"][value="Inschrijven"],
+  .nf-fu-fileinput-button {
+    width: auto;
+    background: transparent;
+    font-family: $secondary-font;
+    color: $white;
+    padding: .5rem 2rem;
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 1.6rem;
+    background: $primary-color;
+    height: auto;
+
+    &:hover, &:focus {
+      background: $secondary-color;
+    }
+
+    &:active {
+      transition: none;
+      background: $primary-color-light;
+    }
+  }
+}
+
+.nf-field-label {
+  order: 5;
+}
+
+.nf-field-description {
+  width: 100%;
+  order: 10;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+
+  p {
+    font-size: 1.2rem !important;
+    line-height: 1.5rem !important;
+  }
+}
+
+.nf-field-element {
+  order: 15;
+}
+
+
+/* ---------------------------------
+LABEL ABOVE
+----------------------------------*/
+.label-above {
+  .nf-field-label {
+    margin-bottom: 10px;
+  }
+
+  .recaptcha-wrap {
+    label {
+      display: none;
+    }
+  }
+}
+
+/* ---------------------------------
+LABEL BELOW
+----------------------------------*/
+.label-below {
+  .nf-field-label {
+    margin-top: 10px;
+    order: 15;
+  }
+
+  .nf-field-element {
+    order: 5;
+  }
+}
+
+/* ---------------------------------
+LABEL HIDDEN
+----------------------------------*/
+.label-hidden {
+  .field-wrap {
+    flex-wrap: wrap;
+  }
+
+  .nf-field-label {
+    height: 0;
+    margin: 0 !important;
+    width: 100%;
+    visibility: hidden;
+  }
+
+  .nf-field-description {
+    width: 100%;
+    order: 20;
+  }
+
+  .nf-field-element {
+    width: 100%;
+  }
+}
+
+/* ---------------------------------
+LABEL LEFT
+----------------------------------*/
+.label-left {
+  .field-wrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nf-field-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 2%;
+    text-align: right;
+    width: 35%;
+    order: 5;
+
+    label {
+      width: 100%;
+    }
+  }
+
+  .nf-field-description {
+    margin-left: 35%;
+  }
+
+  .nf-field-element {
+    display: inline-block;
+    width: 65%;
+    order: 10;
+  }
+
+  .nf-after-field {
+    margin-left: 36.5%;
+  }
+}
+
+/* ---------------------------------
+LABEL RIGHT
+----------------------------------*/
+.label-right {
+  .field-wrap {
+    flex-direction: row;
+  }
+
+  .nf-field-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 2%;
+    width: 35%;
+    order: 10;
+  }
+
+  .nf-field-description {
+    margin-right: 35%;
+    order: 15;
+  }
+
+  .nf-field-element {
+    display: inline-block;
+    width: 65%;
+    order: 5;
+  }
+
+  .checkbox-wrap {
+    .nf-field-label {
+      width: auto;
+    }
+
+    .nf-field-element {
+      width: 20px;
+    }
+  }
+
+  .nf-after-field {
+    width: 65%;
+  }
+}
+
+/* ---------------------------------
+ADJUST SOME LABEL ABOVE & BELOW ISSUES
+----------------------------------*/
+.label-below,
+.label-above {
+  .field-wrap {
+    flex-direction: column;
+    flex-flow: wrap;
+  }
+
+  .nf-field-element {
+    margin: 0;
+    width: 100%;
+    //padding-left: 1.5rem;
+  }
+
+  .checkbox-wrap {
+    .nf-field-label {
+      //margin: 0;
+    }
+  }
+
+  .recaptcha-wrap, .submit-wrap {
+    .nf-field-element {
+      padding-left: 0;
+    }
+  }
+}
+
+/* ---------------------------------
+ADJUST SOME LABEL LEFT & RIGHT ISSUES
+----------------------------------*/
+.label-left,
+.label-right {
+  .textarea-wrap,
+  .listradio-wrap,
+  .listcheckbox-wrap {
+    .nf-field-label {
+      align-items: flex-start;
+    }
+  }
+
+  .textarea-wrap {
+    .nf-field-label {
+      margin-top: 5px;
+    }
+  }
+
+  .html-wrap,
+  .hr-wrap {
+    display: block;
+
+    .nf-field-element {
+      display: block;
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+
+.nf-fu-progress {
+  .nf-fu-progress-bar {
+    background: $primary-color;
+  }
+}
+
+.nf-field {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.nf-row .nf-cell[style="width: 50%;"] {
+  @media (max-width: 600px) {
+    width: 50% !important;
+  }
+  @include media-breakpoint-down(xxs) {
+    width: 100% !important;
+  }
+}
+
+.nf-mp-header {
+  h3 {
+    padding: 2rem .5rem;
+  }
+
+  .nf-breadcrumbs {
+    display: flex;
+    flex-flow: wrap;
+    @include media-breakpoint-down(md) {
+      flex-flow: column;
+    }
+
+    li {
+      display: block;
+      flex: 1;
+      margin-right: 2rem !important;
+      float: none;
+      @include media-breakpoint-down(md) {
+        margin-right: 0 !important;
+      }
+
+      &:last-child {
+        margin-right: 0 !important;
+      }
+
+      a {
+        display: block;
+        margin: 0;
+      }
+
+      &.active a {
+        background-color: $primary-color;
+        color: white;
+        @include boxShadowBig();
+      }
+    }
+  }
+
+  .nf-progress-container {
+    height: 2.5rem;
+
+    .nf-progress {
+      background-color: $primary-color;
+      height: 2.5rem;
+      @include transition();
+    }
+  }
+}
+
+.nf-mp-footer {
+
+  .nf-next-previous {
+    padding: 1rem !important;
+  }
+
+  .nf-next-item {
+    display: flex;
+    align-items: center;
+
+    input {
+      height: auto;
+      border: 0;
+      cursor: pointer;
+      font-weight: 500;
+      color: $secondary-color;
+      background-color: transparent;
+      padding: 1rem;
+
+      &:hover, &:focus {
+        color: $primary-color;
+      }
+    }
+
+    &:after {
+      content: "\f178";
+      font-family: "Font Awesome 5 Pro";
+      display: inline-block;
+      margin-left: 1rem;
+      color: $primary-color;
+      @include transition();
+    }
+
+    &:hover, &:focus {
+      &:after {
+        transform: translateX(.5rem);
+      }
+    }
+  }
+
+  .nf-previous-item {
+    display: flex;
+    align-items: center;
+
+    input {
+      height: auto;
+      border: 0;
+      cursor: pointer;
+      font-weight: 500;
+      color: $secondary-color;
+      padding: 1rem;
+      background-color: transparent;
+
+      &:hover, &:focus {
+        color: $primary-color;
+      }
+    }
+
+    &:before {
+      content: "\f177";
+      font-family: "Font Awesome 5 Pro";
+      display: inline-block;
+      margin-left: 1rem;
+      color: $primary-color;
+      @include transition();
+    }
+
+    &:hover, &:focus {
+      &:before {
+        transform: translateX(-.5rem);
+      }
+    }
+  }
+}
+
+.listimage-container {
+  margin-bottom: 0;
+}
+
+.listimage-wrap {
+  padding: 2.5rem 0;
+  border-top: 2px solid $off-white-alternate;
+
+
+  > .nf-field-label {
+    margin-bottom: 0;
+
+    label {
+      font-size: 2rem;
+      font-weight: 600;
+      color: $primary-color
+    }
+  }
+
+  .nf-field-element {
+    ul {
+      padding-left: 0;
+      margin-bottom: 0;
+      @include media-breakpoint-down(sm) {
+        display: block !important;
+      }
+    }
+
+    li {
+      margin: 0 !important;
+    }
+
+    img {
+      width: 12.5rem !important;
+      height: 12.5rem !important;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      @include media-breakpoint-down(md) {
+        max-width: none !important;
+        margin: 0;
+      }
+    }
+  }
+
+  .nf-checked-label {
+    font-weight: 600;
+    color: $primary-color;
+  }
+}
+
+#nf-field-25-wrap ul li:last-child {
+  input, label {
+    display: none !important;
+  }
+}
+
+#nf-field-21-wrap ul li {
+  &:nth-child(3), &:last-child {
+    input, label {
+      display: none !important;
+    }
+  }
+}
+
+.submit-wrap .button {
+  background-color: $primary-color;
+  color: white;
+  padding: 1rem 2rem;
+
+  &:hover, &:focus {
+    background-color: $primary-color-dark;
+    color: white;
+    @include boxShadowBig();
+  }
+}
