@@ -11,8 +11,8 @@ include(locate_template('includes/globals.php', false, false));
         <div class="footer-cta--content">
             <h2 class="cta-content--headline">Schrijf je in</h2>
             <div class="cta-content--description">
-                <p>Find your passion, inspiration and <br>
-                    calling with A Seat At The Table.</p>
+                <p>Vind je passie, inspiratie en<br>
+                    roeping met A Seat At The Table.</p>
             </div>
         </div>
         <div class="footer-cta--action">
@@ -81,35 +81,27 @@ include(locate_template('includes/globals.php', false, false));
                         wp_reset_postdata(); endif; ?>
                 </ul>
             </div>
-            <div class="col-auto pl-5 pr-5">
-                <div class="footer-menu">
-                    <h3 class="footer-menu--title"><?= bloginfo('name') ?></h3>
-                    <ul class="information-list">
-                        <li>
-                            <?= bloginfo('description') ?>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noopener"
-                               href="<?= $google ?>"><?= $street.',  '.$zipcode.' '.$city ?></a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noopener"
-                               href="mailto:<?= $email ?>">
-                                <?= $email ?>
-                            </a>
-                        </li>
-                        <li>
-                            BTW: <?= $vat ?>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
     <div class="main-footer--mid">
         <a class="footer-branding" href="<?= home_url() ?>">
             <img src="<?= get_template_directory_uri() ?>/images/asatt-footer.svg" alt="<?= bloginfo('name') ?>">
         </a>
+        <ul class="information-list">
+            <li>
+                <a target="_blank" rel="noopener"
+                   href="<?= $google ?>"><?= $street.',  '.$zipcode.' '.$city ?></a>
+            </li>
+            <li>
+                <a target="_blank" rel="noopener"
+                   href="mailto:<?= $email ?>">
+                    <?= $email ?>
+                </a>
+            </li>
+            <li>
+                BTW: <?= $vat ?>
+            </li>
+        </ul>
         <ul class="social-media">
             <li>
                 <a href="<?= $facebook ?>" rel="noopener" target="_blank">

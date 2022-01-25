@@ -1,14 +1,9 @@
 <section class="activities">
     <?
-    $time = current_time('timestamp');
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     $args = array(
-        'post_type' => 'activiteit',
+        'post_type' => 'opportuniteit',
         'post_status' => 'publish',
-        'orderby' => 'meta_value',
-        'meta_key' => 'event_start_date',
-        'meta_value' => $time,
-        'meta_compare' => '>=',
         'order' => 'ASC',
         'posts_per_page' => 6,
         'paged' => $paged,
@@ -17,11 +12,12 @@
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
 
-            $startdate = get_field('event_start_date', get_the_ID());
-            $enddate = get_field('event_end_date', get_the_ID());
-            $categories = get_the_category();
-            $category_name = $categories[0]->name;
-            $activity_image = wp_get_attachment_image_src(get_post_thumbnail_id($post->id), 'full');
+            $location = get_field('address_opportunity', get_the_ID());
+            $contract_type = get_field('contracttype', get_the_ID());
+            $contract_term = get_field('contractduur', get_the_ID());
+            $contract_hours = get_field('uren', get_the_ID());
+            $activity_image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full');
+
 
             (!empty($activity_image)) ? $activity_image = $activity_image[0] : $activity_image = get_template_directory_uri().'/images/default.jpg';
 
@@ -29,14 +25,27 @@
             <article class="activity-article">
                 <a href="<? the_permalink() ?>">
                     <figure class="activity-article--visual">
-                        <span class="activity-article--category"><?=  $category_name?></span>
                         <img src="<?= $activity_image ?>" alt="<? the_title() ?> - <?= bloginfo('name') ?>">
                     </figure>
                     <div class="activity-article--content">
-                        <span class="activity-article--date"><?= date('d/m/Y - H.i', strtotime($startdate)) ?></span>
                         <h3 class="activity-article--title"><? the_title() ?></h3>
+                        <ul class="opportunity-list-index">
+                            <li>
+                                <i class="fa-regular fa-memo-circle-check"></i>
+                                <?= $contract_type ?>
+                            </li>
+                            <li>
+                                <i class="fa-regular fa-calendar-clock"></i>
+                                <?= $contract_term ?>
+                            </li>
+                            <li>
+                                <i class="fa-regular fa-clock-rotate-left"></i>
+                                <?= $contract_hours ?>
+                            </li>
+                        </ul>
+                        <br>
                         <span class="button-arrowed">
-                            Verder lezen
+                            Solliciteer hier!
                             <svg class="arrow-icon" width="32" height="32" viewBox="0 0 32 32">
                               <g fill="none" stroke="#2567ce" stroke-width="1.5" stroke-linejoin="round"
                                  stroke-miterlimit="10">

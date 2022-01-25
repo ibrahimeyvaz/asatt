@@ -1,0 +1,8 @@
+.opportunity-list{
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  @include media-breakpoint-down(md){
+    flex-flow: column;
+  }
+}

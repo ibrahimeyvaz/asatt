@@ -55,3 +55,59 @@ function activiteiten() {
 
 }
 add_action( 'init', 'activiteiten', 0 );
+
+// Register Custom Post Type
+function oppurtunities() {
+
+    $labels = array(
+        'name'                  => _x( 'Opportuniteiten', 'Post Type General Name', 'asatt' ),
+        'singular_name'         => _x( 'Opportuniteit', 'Post Type Singular Name', 'asatt' ),
+        'menu_name'             => __( 'Opportuniteiten', 'asatt' ),
+        'name_admin_bar'        => __( 'Opportuniteiten', 'asatt' ),
+        'archives'              => __( 'Opportuniteiten', 'asatt' ),
+        'attributes'            => __( 'Item Attributes', 'asatt' ),
+        'parent_item_colon'     => __( 'Parent Item:', 'asatt' ),
+        'all_items'             => __( 'Alle opportuniteiten', 'asatt' ),
+        'add_new_item'          => __( 'Add New Item', 'asatt' ),
+        'add_new'               => __( 'Nieuw', 'asatt' ),
+        'new_item'              => __( 'Nieuw', 'asatt' ),
+        'edit_item'             => __( 'Wijzigen', 'asatt' ),
+        'update_item'           => __( 'Updaten', 'asatt' ),
+        'view_item'             => __( 'Bekijken', 'asatt' ),
+        'view_items'            => __( 'Bekijk alles', 'asatt' ),
+        'search_items'          => __( 'Zoeken', 'asatt' ),
+        'not_found'             => __( 'Niet gevonden', 'asatt' ),
+        'not_found_in_trash'    => __( 'Not found in Trash', 'asatt' ),
+        'featured_image'        => __( 'Uitgelichte afbeelding', 'asatt' ),
+        'set_featured_image'    => __( 'Als uitgelichte afbeelding gebruiken', 'asatt' ),
+        'remove_featured_image' => __( 'Verwijderen', 'asatt' ),
+        'use_featured_image'    => __( 'Als uitgelichte afbeelding gebruiken', 'asatt' ),
+        'insert_into_item'      => __( 'Insert into item', 'asatt' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this item', 'asatt' ),
+        'items_list'            => __( 'Items list', 'asatt' ),
+        'items_list_navigation' => __( 'Items list navigation', 'asatt' ),
+        'filter_items_list'     => __( 'Filter items list', 'asatt' ),
+    );
+    $args = array(
+        'label'                 => __( 'Opportuniteit', 'asatt' ),
+        'description'           => __( 'Opportuniteiten', 'asatt' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'editor', 'thumbnail' ),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 5,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => false,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'page',
+        'show_in_rest'          => true,
+    );
+    register_post_type( 'opportuniteit', $args );
+
+}
+add_action( 'init', 'oppurtunities', 0 );

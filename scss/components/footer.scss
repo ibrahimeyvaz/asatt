@@ -139,6 +139,24 @@
   .main-footer--mid {
     text-align: center;
     margin-bottom: 20rem;
+    .information-list{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 5rem;
+      li{
+        margin-right: 2rem;
+        color: rgba(white, .9);
+        a{
+          color: rgba(white, .9);
+          &:hover, &:focus{
+            color: white;
+          }
+        }
+        &:last-child{
+          margin-right: 0;
+        }
+      }
+    }
 
     .footer-branding {
       width: 70%;
@@ -155,7 +173,6 @@
 
       li {
         margin-right: 2rem;
-
         &:last-child {
           margin: 0;
         }

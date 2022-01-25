@@ -1,12 +1,10 @@
 <?php
 get_header();
 
-$startdate = get_field('event_start_date');
-$enddate = get_field('event_end_date');
-$locality = get_field('fysiek_of_online');
-$location = get_field('adres');
-$categories = get_the_category();
-$category_name = $categories[0]->name;
+$location = get_field('address_opportunity');
+$contract_type = get_field('contracttype');
+$contract_term = get_field('contractduur');
+$contract_hours = get_field('uren');
 
 if ($location):
     $address = $location['street_name'].' '.$location['street_number'].', '.$location['post_code'].' '.$location['city'];
@@ -20,27 +18,39 @@ include locate_template('includes/globals.php', false, true); ?>
         <figure class="hero-visual">
             <img src="<?= $page_visual ?>" alt="<? the_title() ?>"><
         </figure>
-        <div class="hero-content">
+        <div class="hero-content hero-content--opportunity">
             <strong class="hero-content--tagline"><?= bloginfo('description') ?></strong>
             <h1 class="hero-content--headline">
                 <? the_title() ?>
             </h1>
             <div class="hero-content--activity">
-                <span class="activity-category"><?= $category_name ?></span>
-                <span class="activity-date"><?= date('d/m/Y - H.i', strtotime($startdate)) ?></span>
-                <? if ($locality === true): ?>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="<?= $address_url ?>" target="_blank" rel="noreferrer">
-                        <?= $address ?>
-                    </a>
-                <? endif; ?>
+                <ul class="opportunity-list">
+                    <li>
+                        <i class="fa-regular fa-memo-circle-check"></i>
+                        <?= $contract_type ?>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-calendar-clock"></i>
+                        <?= $contract_term ?>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-clock-rotate-left"></i>
+                        <?= $contract_hours ?>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-building"></i>
+                        <a href="<?= $address_url ?>" target="_blank" rel="noreferrer">
+                            <?= $address ?>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 <main class="main-wrapper">
     <div class="row">
-        <? if ($locality === true): ?>
+        <? if ($address): ?>
             <script>
                 function initMap() {
                     var styledMap = [

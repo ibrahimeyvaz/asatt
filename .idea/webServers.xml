@@ -3,9 +3,9 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="7b713a78-e7be-4471-80f7-ed6ee0904269" name="Reign @ Ploi">
-        <fileTransfer rootFolder="/home/ploi" accessType="SFTP" host="178.62.229.219" port="22" sshConfigId="2c83b256-37a5-42bf-811a-79d05f89c572" sshConfig="Ploi" authAgent="true">
+        <fileTransfer rootFolder="/home/ploi" accessType="SFTP" host="178.62.229.219" port="22" sshConfigId="2c83b256-37a5-42bf-811a-79d05f89c572" sshConfig="ploi@178.62.229.219:22 agent" authAgent="true">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

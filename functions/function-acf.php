@@ -97,5 +97,15 @@ function my_acf_init_block_types() {
                 'keywords' => array('activiteiten'),
             )
         );
+        acf_register_block_type(
+            array(
+                'name' => 'opportunities',
+                'title' => __('Opportuniteiten'),
+                'render_template' => 'blocks/block-opportunities.php',
+                'category' => 'formatting',
+                'icon' => 'admin-comments',
+                'keywords' => array('opportunities'),
+            )
+        );
     }
 }
