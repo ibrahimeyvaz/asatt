@@ -549,6 +549,15 @@ ADJUST SOME LABEL ABOVE & BELOW ISSUES
   .field-wrap {
     flex-direction: column;
     flex-flow: wrap;
+
+    &.mailchimp-optin-wrap {
+      display: flex;
+      .nf-field-element{
+        width: auto;
+        order: -1;
+      }
+    }
+
   }
 
   .nf-field-element {

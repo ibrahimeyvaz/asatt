@@ -5,7 +5,7 @@
       <paths name="Reign @ Ploi">
         <serverdata>
           <mappings>
-            <mapping deploy="/asatt.reign.agency/public/wp-content/themes/asatt" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/www.asatt.eu/public/wp-content/themes/asatt" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

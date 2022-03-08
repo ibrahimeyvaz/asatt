@@ -17,30 +17,30 @@ include(locate_template('includes/globals.php', false, false));
         </div>
         <div class="footer-cta--action">
             <a class="button-arrowed" href="<?= site_url() ?>/inschrijving" ">Take a seat
-                <svg class="arrow-icon" width="32" height="32" viewBox="0 0 32 32">
-                    <g fill="none" stroke="#2567ce" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
-                        <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
-                        <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
-                    </g>
-                </svg>
+            <svg class="arrow-icon" width="32" height="32" viewBox="0 0 32 32">
+                <g fill="none" stroke="#2567ce" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                    <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                    <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                </g>
+            </svg>
             </a>
         </div>
         <div class="footer-cta--intro">
-            <p>Ook zin om wekelijks mee aan tafel te schuiven bij de top van het Belgische en<br>
+            <p>Ook zin om wekelijks mee aan tafel te schuiven bij de top van het Belgische en<br class="d-none d-md-block">
                 internationale bedrijfsleven, middenveld, sport en politiek?</p>
         </div>
     </div>
     <div class="main-footer--navigation">
         <div class="row no-gutters justify-content-center">
-            <div class="col-auto pl-5 pr-5">
+            <div class="col-xs-12 col-md-auto pl-md-5 pr-md-5">
                 <h3 class="footer-menu--title">Snelmenu</h3>
                 <? dynamic_sidebar('footermenu') ?>
             </div>
-            <div class="col-auto pl-5 pr-5">
+            <div class="col-xs-12 col-md-auto pl-md-5 pr-md-5">
                 <h3 class="footer-menu--title">Links</h3>
                 <? dynamic_sidebar('footermenu2') ?>
             </div>
-            <div class="col-auto pl-5 pr-5">
+            <div class="col-xs-12 col-md-auto pl-md-5 pr-md-5">
                 <h3 class="footer-menu--title">Activiteiten</h3>
                 <ul class="footer-menu footer-menu--activities">
                     <?php
@@ -72,8 +72,36 @@ include(locate_template('includes/globals.php', false, false));
                                             'd/m/Y',
                                             strtotime($startdate)
                                         ) ?>
-                                    —
-                                    <?= $categories[0]->name ?>
+                                        <? if ($categories): ?>
+                                            —
+                                            <?= $categories[0]->name ?>
+                                        <? endif; ?>
+                                    </span>
+                                </a>
+                            </li>
+                        <? endwhile;
+                        wp_reset_postdata(); endif; ?>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-auto pl-md-5 pr-md-5">
+                <h3 class="footer-menu--title">Opportuniteiten</h3>
+                <ul class="footer-menu footer-menu--activities">
+                    <?php
+                    $time = current_time('timestamp');
+                    $args = array(
+                        'post_type' => 'opportuniteit',
+                        'post_status' => 'publish',
+                        'order' => 'DESC',
+                        'posts_per_page' => 6,
+                    );
+                    $query = new WP_Query($args);
+                    if ($query->have_posts()) :
+                        while ($query->have_posts()) : $query->the_post();
+                            ?>
+                            <li class="activity-item">
+                                <a href="<? the_permalink() ?>">
+                                    <span class="activity-item--title">
+                                        <? the_title() ?>
                                     </span>
                                 </a>
                             </li>
@@ -138,7 +166,7 @@ include(locate_template('includes/globals.php', false, false));
                     "asatt"
                 ) ?><br
                         class="d-none d-xs-block d-sm-none"> <a class="terms-link"
-                                                                href="<?= get_permalink(24) ?>"><?= _e(
+                                                                href="<?= site_url() ?>/algemene-voorwaarden"><?= _e(
                         "Algemene voorwaarden",
                         "asatt"
                     ) ?></a>. <a class="privacy-link" href="<?= get_permalink(3) ?>"><?= _e(
@@ -162,6 +190,5 @@ include(locate_template('includes/globals.php', false, false));
 </div>
 
 <? wp_footer(); ?>
-
 </body>
 </html>

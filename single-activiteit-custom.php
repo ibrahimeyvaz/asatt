@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Template Name: Activiteit aangepast
+ */
 get_header();
 
 $startdate = get_field('event_start_date');
@@ -31,18 +35,16 @@ include locate_template('includes/globals.php', false, true); ?>
             </h1>
             <div class="hero-content--activity">
                 <span class="activity-category"><?= $category_name ?></span>
-                <? if ($startdate): ?>
-                    <? if ($multiple_days): ?>
-                        <span class="activity-date"><?= $startdate ?> tot <?= $enddate ?></span>
-                    <? else: ?>
-                        <span class="activity-date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
-                    <? endif; ?>
-                    <? if ($locality === true): ?>
-                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href="<?= $address_url ?>" target="_blank" rel="noreferrer">
-                            <?= $address ?>
-                        </a>
-                    <? endif; ?>
+                <? if($multiple_days): ?>
+                    <span class="activity-date"><?= $startdate ?> tot <?= $enddate ?></span>
+                <? else: ?>
+                    <span class="activity-date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
+                <? endif; ?>
+                <? if ($locality === true): ?>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="<?= $address_url ?>" target="_blank" rel="noreferrer">
+                        <?= $address ?>
+                    </a>
                 <? endif; ?>
             </div>
         </div>
@@ -166,21 +168,13 @@ include locate_template('includes/globals.php', false, true); ?>
 
     </div>
     <div class="row justify-content-between">
-        <article class="col-xl-6">
+        <article class="col-xl-12">
             <? the_content() ?>
             <? if ($locality === true): ?>
-                <figure id="map"
-                        class="activity-map" <?php if ($is_preview): ?> style="width:100%; height: 400px" <? endif ?>></figure>
+            <figure id="map"
+                    class="activity-map" <?php if ($is_preview): ?> style="width:100%; height: 400px" <? endif ?>></figure>
             <? endif; ?>
         </article>
-        <aside class="col-xl-5">
-            <figure class="page-visual">
-                <img width="800" height="800" loading="lazy" src="<?= $page_visual ?>" alt="<? the_title() ?>">
-            </figure>
-            <? if ($form): ?>
-                <?= do_shortcode($form) ?>
-            <? endif; ?>
-        </aside>
     </div>
 </main>
 

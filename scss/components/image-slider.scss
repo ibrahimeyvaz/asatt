@@ -1,0 +1,10 @@
+.swiper-image--slider {
+  margin-bottom: 5rem;
+
+  .image-slider--item {
+    height: 35rem;
+    @include media-breakpoint-down(md) {
+      height: 20rem;
+    }
+  }
+}

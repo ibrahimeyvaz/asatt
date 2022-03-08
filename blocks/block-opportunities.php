@@ -4,7 +4,7 @@
     $args = array(
         'post_type' => 'opportuniteit',
         'post_status' => 'publish',
-        'order' => 'ASC',
+        'order' => 'DESC',
         'posts_per_page' => 6,
         'paged' => $paged,
     );
@@ -12,12 +12,12 @@
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
 
-            $location = get_field('address_opportunity', get_the_ID());
-            $contract_type = get_field('contracttype', get_the_ID());
-            $contract_term = get_field('contractduur', get_the_ID());
-            $contract_hours = get_field('uren', get_the_ID());
-            $activity_image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full');
-
+            $activity_image = wp_get_attachment_image_src(get_post_thumbnail_id($post->id), 'square');
+            $startdate = get_field('event_start_date', get_the_ID());
+            $enddate = get_field('event_end_date', get_the_ID());
+            $starthour = get_field('beginuur', get_the_ID());
+            $endhour = get_field('einduur', get_the_ID());
+            $multiple_days = get_field('meerdaags', get_the_ID());
 
             (!empty($activity_image)) ? $activity_image = $activity_image[0] : $activity_image = get_template_directory_uri().'/images/default.jpg';
 
@@ -25,27 +25,19 @@
             <article class="activity-article">
                 <a href="<? the_permalink() ?>">
                     <figure class="activity-article--visual">
-                        <img src="<?= $activity_image ?>" alt="<? the_title() ?> - <?= bloginfo('name') ?>">
+                        <img loading="lazy" width="300" height="300" src="<?= $activity_image ?>" alt="<? the_title() ?> - <?= bloginfo('name') ?>">
                     </figure>
                     <div class="activity-article--content">
+                        <? if ($startdate): ?>
+                            <? if ($multiple_days): ?>
+                                <span class="activity-article--date"><?= $startdate ?> tot <?= $enddate ?></span>
+                            <? else: ?>
+                                <span class="activity-article--date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
+                            <? endif; ?>
+                        <? endif; ?>
                         <h3 class="activity-article--title"><? the_title() ?></h3>
-                        <ul class="opportunity-list-index">
-                            <li>
-                                <i class="fa-regular fa-memo-circle-check"></i>
-                                <?= $contract_type ?>
-                            </li>
-                            <li>
-                                <i class="fa-regular fa-calendar-clock"></i>
-                                <?= $contract_term ?>
-                            </li>
-                            <li>
-                                <i class="fa-regular fa-clock-rotate-left"></i>
-                                <?= $contract_hours ?>
-                            </li>
-                        </ul>
-                        <br>
                         <span class="button-arrowed">
-                            Solliciteer hier!
+                            Verder lezen
                             <svg class="arrow-icon" width="32" height="32" viewBox="0 0 32 32">
                               <g fill="none" stroke="#2567ce" stroke-width="1.5" stroke-linejoin="round"
                                  stroke-miterlimit="10">

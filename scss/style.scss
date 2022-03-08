@@ -21,6 +21,8 @@ Author URI: https://www.reign.agency
 @import "vendor/jquery.fancybox",
         "vendor/ninja-forms/st-default",
         "vendor/cookie",
+        "vendor/hamburgers/hamburgers",
+        "vendor/slicknav",
         "vendor/gutenberg/style";
 
 // Elements
@@ -40,7 +42,9 @@ Author URI: https://www.reign.agency
 
 @import "components/header",
         "components/hero",
+        "components/home-slider",
         "components/partners",
+        "components/image-slider",
         "components/persons",
         "components/activities",
         "components/opportunities",
@@ -52,6 +56,3 @@ Author URI: https://www.reign.agency
         "components/services",
         "components/pagination",
         "components/footer";
-
-
-

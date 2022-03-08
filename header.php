@@ -78,7 +78,7 @@
         ?>
     </div>
 </nav>
-<header class="main-header<?= (!is_home() && !is_front_page()) ? ' main-header--page' : '' ?>" id="site-header"
+<header class="main-header main-header--page" id="site-header"
         data-url="<?= site_url() ?>"
         data-site="<?= bloginfo('name') ?>">
     <a class="main-branding" href="<?= home_url() ?>" itemscope itemtype="https://schema.org/Organization">
@@ -121,4 +121,17 @@
         </div>
     </div>
 </header>
+<div class="mobile-menu">
+    <?
+    wp_nav_menu(
+        array(
+            'container'     =>  '   ',
+            'theme_location' => 'mobile',
+            'items_wrap' => '<ul class="mobile--menu" itemscope itemtype="http://schema.org/SiteNavigationElement" class="%2$s">%3$s</ul>',
+            'link_before' => '<span>',
+            'link_after' => '</span>',
+        )
+    );
+    ?>
+</div>
 <div class="site-wrapper">

@@ -42,6 +42,13 @@
 .partner-grid {
   display: grid;
   grid-template-columns: auto auto auto;
+  @include media-breakpoint-down(lg) {
+    grid-template-columns: auto auto;
+  }
+  @include media-breakpoint-down(md) {
+    grid-template-columns: auto;
+    margin-bottom: 5rem;
+  }
 
   .partner-grid--block {
     padding: 5rem;
@@ -73,7 +80,8 @@
       border-right: 1px solid $gray-light;
       border-bottom: 1px solid $gray-light;
     }
-    &:nth-of-type(5), &:nth-of-type(6){
+
+    &:nth-of-type(5), &:nth-of-type(6) {
       border-bottom: 1px solid $gray-light;
     }
   }

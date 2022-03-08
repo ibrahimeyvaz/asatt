@@ -21,7 +21,7 @@
             ?>
             <li class="person-item">
                 <figure class="person-item--visual">
-                    <img src="<?= esc_url($person_image['url']) ?>"
+                    <img loading="lazy" width="150" height="150" src="<?= esc_url($person_image['url']) ?>"
                          alt="<?= $person_name ?> @ <?= bloginfo('description') ?>">
                 </figure>
                 <div class="person-item--detail">

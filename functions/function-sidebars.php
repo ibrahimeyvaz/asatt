@@ -24,27 +24,6 @@ if (function_exists('register_sidebar')) {
             'after_title' => '</h3>',
         )
     );
-    register_sidebar(
-        array(
-            'name' => 'Footer Menu 3',
-            'id' => 'footermenu3',
-            'before_widget' => '',
-            'after_widget' => '',
-            'before_title' => '',
-            'after_title' => '',
-        )
-    );
-    register_sidebar(
-        array(
-            'name' => 'Footer Menu 4',
-            'id' => 'footermenu4',
-            'before_widget' => '',
-            'after_widget' => '',
-            'before_title' => '',
-            'after_title' => '',
-        )
-    );
-
 }
 
 ?>

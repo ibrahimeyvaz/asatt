@@ -10,6 +10,21 @@ jQuery(function ($) {
 
 
 
+    const siteHeader = $('.main-header');
+    const siteNav = $('.main-navigation');
+
+    dataUrl = siteHeader.data("url");
+    dataSite = siteHeader.data("site");
+
+    brand = '<a href="' + dataUrl + '">' + dataSite + '</a>';
+
+    $('.mobile-menu').slicknav({
+        brand: brand,
+        label: '',
+        allowParentLinks: true
+    });
+
+
     $('.cn-more-info').removeClass('button');
 
     var options = {
@@ -49,17 +64,6 @@ jQuery(function ($) {
             },
         },
     });
-
-    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        gsap.to(".hero:not(.hero-page) .hero-visual img", {filter: 'grayscale(100%)', repeat: -1, yoyo: true, duration: 2});
-        singleImage.paroller({
-            factor: 0.045,            // multiplier for scrolling speed and offset
-            factorXs: 2,           // multiplier for scrolling speed and offset
-            type: 'foreground',     // background, foreground
-            direction: 'vertical', // vertical, horizontal
-        })
-
-    }
 
 
 

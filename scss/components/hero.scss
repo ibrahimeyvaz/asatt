@@ -96,7 +96,8 @@
       font-size: 3rem;
       font-weight: bold;
     }
-    &.hero-content--opportunity{
+
+    &.hero-content--opportunity {
       min-width: 80%;
     }
   }
@@ -152,10 +153,10 @@
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: start;
 
       .hero-content {
-        text-align: center;
+        text-align: left;
         background-color: transparent;
         top: 7rem;
 
@@ -168,12 +169,19 @@
 
         .hero-content--headline {
           color: white;
-          font-size: 5rem;
+          font-size: 4.4rem;
+          @include media-breakpoint-down(sm) {
+            font-size: 3rem;
+          }
         }
 
         .hero-content--activity {
-          padding: 1rem 2rem;
+          display: inline-block;
           color: white;
+          background-color: rgba($primary-color, .8);
+          backdrop-filter: blur(1rem);
+          width: auto;
+          padding: 2rem;
 
           .activity-category {
             display: block;

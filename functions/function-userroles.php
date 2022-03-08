@@ -27,6 +27,7 @@ function add_theme_caps() {
 	$role->add_cap('edit_published_pages');
 	$role->add_cap('edit_published_posts');
 	$role->add_cap('manage_links');
+	$role->add_cap('manage_categories');
 	$role->add_cap('publish_pages');
 	$role->add_cap('publish_posts');
 	$role->add_cap('read_private_pages');
@@ -36,17 +37,29 @@ function add_theme_caps() {
 }
 add_action( 'admin_init', 'add_theme_caps');
 
-add_action('admin_menu', 'remove_built_in_roles');
+// Must use all three filters for this to work properly.
+add_filter( 'ninja_forms_admin_parent_menu_capabilities',   'nf_subs_capabilities' ); // Parent Menu
+add_filter( 'ninja_forms_admin_all_forms_capabilities',     'nf_subs_capabilities' ); // Forms Submenu
+add_filter( 'ninja_forms_admin_submissions_capabilities',   'nf_subs_capabilities' ); // Submissions Submenu
 
-function remove_built_in_roles()
-{
-    global $wp_roles;
+function nf_subs_capabilities( $cap ) {
+    return 'edit_posts'; // EDIT: User Capability
+}
 
-    $roles_to_remove = array('subscriber', 'contributor', 'author', 'editor', 'seo-editor');
+/**
+ * Filter hook used in the API route permission callback to retrieve submissions
+ *
+ * return bool as for authorized or not.
+ */
+add_filter( 'ninja_forms_api_allow_get_submissions', 'nf_define_permission_level', 10, 2 );
+add_filter( 'ninja_forms_api_allow_delete_submissions', 'nf_define_permission_level', 10, 2 );
+add_filter( 'ninja_forms_api_allow_update_submission', 'nf_define_permission_level', 10, 2 );
+add_filter( 'ninja_forms_api_allow_handle_extra_submission', 'nf_define_permission_level', 10, 2 );
+add_filter( 'ninja_forms_api_allow_email_action', 'nf_define_permission_level', 10, 2 );
 
-    foreach ($roles_to_remove as $role) {
-        if (isset($wp_roles->roles[$role])) {
-            $wp_roles->remove_role($role);
-        }
-    }
+function nf_define_permission_level() {
+
+    $allowed = current_user_can("delete_others_posts");
+
+    return $allowed;
 }

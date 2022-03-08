@@ -17,10 +17,10 @@ $color_hover_bg: #ccc;
 $color_hover_text: #222;
 
 .slicknav_menu {
-  position: fixed;
+  position: static;
   @include transitionSlow();
   width: 100%;
-  background: white;
+  background: $primary-color;
   padding: 1rem;
   justify-content: space-between;
   display: none;
@@ -42,7 +42,7 @@ $color_hover_text: #222;
   padding: 0;
   width: 100%;
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 500;
   overflow: hidden;
   font-family: $secondary-font;
   @include media-breakpoint-down(xs) {
@@ -50,7 +50,7 @@ $color_hover_text: #222;
   }
 
   li.menu-item {
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid lighten($primary-color, 4%);
 
     &:last-child {
       border-bottom: 0;
@@ -58,13 +58,13 @@ $color_hover_text: #222;
 
     a {
       padding: 1.5rem 2.5rem;
-      font-weight: 600;
+      font-weight: 500;
       text-decoration: none;
-      color: $dark-grey;
+      color: rgba(white, .9);
       text-transform: lowercase;
 
       &:hover, &:focus {
-        background: $primary-color;
+        background: $primary-color-light;
         color: white;
 
         a {
@@ -73,8 +73,9 @@ $color_hover_text: #222;
       }
 
       &[aria-current="page"] {
-        background: $primary-color;
+        background: $primary-color-dark;
         color: white;
+        font-weight: 600;
 
         .slicknav_arrow {
           background: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' width='6' height='3' viewBox='0 0 6 3'><path d='M3,0,6,3H0Z' transform='translate(6 3) rotate(180)' fill='white'/></svg>");
@@ -103,7 +104,7 @@ $color_hover_text: #222;
         text-indent: -9999px;
         height: 5rem;
         width: 5rem;
-        background: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' width='6' height='3' viewBox='0 0 6 3'><path d='M3,0,6,3H0Z' transform='translate(6 3) rotate(180)' fill='#{$primary-color}'/></svg>");
+        background: swiper-svg-uri("<svg xmlns='http://www.w3.org/2000/svg' width='6' height='3' viewBox='0 0 6 3'><path d='M3,0,6,3H0Z' transform='translate(6 3) rotate(180)' fill='#{white}'/></svg>");
         background-repeat: no-repeat;
         background-size: 1.5rem;
         background-position: center;
@@ -121,7 +122,7 @@ $color_hover_text: #222;
         margin-top: 1rem;
         font-size: 1.6rem;
         padding: 2rem;
-        background: $off-white;
+        background: $primary-color-dark;
 
         > a {
           flex-basis: calc(100% - 4rem);
@@ -133,7 +134,7 @@ $color_hover_text: #222;
         }
 
         li {
-          border-color: $gray-light;
+          border-color: lighten($primary-color-dark, 4%);
 
           a {
             font-size: 1.6rem;
@@ -152,10 +153,10 @@ $color_hover_text: #222;
 .slicknav_brand {
   a {
     text-indent: -9999px;
-    height: 5rem;
-    width: 17rem;
+    height: 3rem;
+    width: 13rem;
     display: block;
-    background: url("images/asatt-logo-mobile.svg") no-repeat center;
+    background: url("images/asatt-logo.svg") no-repeat center;
     background-size: contain;
   }
 }

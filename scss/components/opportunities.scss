@@ -1,8 +1,29 @@
-.opportunity-list{
+.opportunity-list {
   text-align: left;
   display: flex;
   justify-content: space-between;
-  @include media-breakpoint-down(md){
+  @include media-breakpoint-down(md) {
     flex-flow: column;
+  }
+}
+
+.opportunity-list-index {
+  li {
+    font-weight: normal;
+
+    svg {
+      display: inline-block;
+      width: 3rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+.page-visual {
+  margin-top: -20rem;
+  @include boxShadowBig;
+  margin-bottom: 5rem;
+  @include media-breakpoint-down(md) {
+    margin-top: 3rem;
   }
 }

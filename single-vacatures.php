@@ -1,16 +1,10 @@
 <?php
 get_header();
 
-$startdate = get_field('event_start_date');
-$enddate = get_field('event_end_date');
-$starthour = get_field('beginuur');
-$endhour = get_field('einduur');
-$multiple_days = get_field('meerdaags');
-$locality = get_field('fysiek_of_online');
-$location = get_field('adres');
-$form = get_field('formulier');
-$categories = get_the_category();
-$category_name = $categories[0]->name;
+$location = get_field('address_opportunity');
+$contract_type = get_field('contracttype');
+$contract_term = get_field('contractduur');
+$contract_hours = get_field('uren');
 
 if ($location):
     $address = $location['street_name'].' '.$location['street_number'].', '.$location['post_code'].' '.$location['city'];
@@ -24,33 +18,41 @@ include locate_template('includes/globals.php', false, true); ?>
         <figure class="hero-visual">
             <img src="<?= $page_visual ?>" alt="<? the_title() ?>"><
         </figure>
-        <div class="hero-content">
+        <div class="hero-content hero-content--opportunity">
             <strong class="hero-content--tagline"><?= bloginfo('description') ?></strong>
             <h1 class="hero-content--headline">
                 <? the_title() ?>
             </h1>
+            <? if($contract_type): ?>
             <div class="hero-content--activity">
-                <span class="activity-category"><?= $category_name ?></span>
-                <? if ($startdate): ?>
-                    <? if ($multiple_days): ?>
-                        <span class="activity-date"><?= $startdate ?> tot <?= $enddate ?></span>
-                    <? else: ?>
-                        <span class="activity-date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
+                <ul class="opportunity-list">
+                    <? if($contract_type): ?>
+                        <li>
+                            <i class="fa-regular fa-memo-circle-check"></i>
+                            <?= $contract_type ?>
+                        </li>
                     <? endif; ?>
-                    <? if ($locality === true): ?>
-                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href="<?= $address_url ?>" target="_blank" rel="noreferrer">
-                            <?= $address ?>
-                        </a>
+                    <? if($contract_term): ?>
+                        <li>
+                            <i class="fa-regular fa-calendar-clock"></i>
+                            <?= $contract_term ?>
+                        </li>
                     <? endif; ?>
-                <? endif; ?>
+                    <? if($contract_hours): ?>
+                        <li>
+                            <i class="fa-regular fa-clock-rotate-left"></i>
+                            <?= $contract_hours ?>
+                        </li>
+                    <? endif; ?>
+                </ul>
             </div>
+            <? endif; ?>
         </div>
     </div>
 </section>
 <main class="main-wrapper">
     <div class="row">
-        <? if ($locality === true): ?>
+        <? if ($address): ?>
             <script>
                 function initMap() {
                     var styledMap = [
@@ -162,26 +164,23 @@ include locate_template('includes/globals.php', false, true); ?>
             </script>
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3nCLZ7ZGxUrmhaI84EfrQTEIecJ_7svI&callback=initMap&language=nl"></script>
+            <figure id="map"
+                    class="activity-map" <?php if ($is_preview): ?> style="margin-left:0;width:100%; height: 500px" <? endif ?>></figure>
         <? endif; ?>
-
-    </div>
-    <div class="row justify-content-between">
-        <article class="col-xl-6">
-            <? the_content() ?>
-            <? if ($locality === true): ?>
+        <div class="row justify-content-between">
+            <article class="col-xl-6">
+                <? the_content() ?>
                 <figure id="map"
                         class="activity-map" <?php if ($is_preview): ?> style="width:100%; height: 400px" <? endif ?>></figure>
-            <? endif; ?>
-        </article>
-        <aside class="col-xl-5">
-            <figure class="page-visual">
-                <img width="800" height="800" loading="lazy" src="<?= $page_visual ?>" alt="<? the_title() ?>">
-            </figure>
-            <? if ($form): ?>
-                <?= do_shortcode($form) ?>
-            <? endif; ?>
-        </aside>
+            </article>
+            <aside class="col-xl-5">
+                <figure class="page-visual">
+                    <img width="800" height="800" loading="lazy" src="<?=  $page_visual  ?>" alt="<? the_title()?>">
+                </figure>
+            </aside>
+        </div>
     </div>
+
 </main>
 
 <? get_footer(); ?>

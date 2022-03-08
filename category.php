@@ -8,11 +8,7 @@
             'post_type' => 'activiteit',
             'post_status' => 'publish',
             'cat' => get_query_var('cat'),
-            'orderby' => 'meta_value',
-            'meta_key' => 'event_start_date',
-            'meta_value' => $time,
-            'meta_compare' => '>=',
-            'order' => 'ASC',
+            'order' => 'DESC',
             'posts_per_page' => 6,
             'paged' => $paged,
         );
@@ -22,10 +18,13 @@
 
                 $startdate = get_field('event_start_date', get_the_ID());
                 $enddate = get_field('event_end_date', get_the_ID());
+                $starthour = get_field('beginuur', get_the_ID());
+                $endhour = get_field('einduur', get_the_ID());
+                $multiple_days = get_field('meerdaags', get_the_ID());
                 $categories = get_the_category();
-                $activity_image = wp_get_attachment_image_src(get_post_thumbnail_id($post->id), 'full');
+                $activity_image = wp_get_attachment_image_src(get_post_thumbnail_id( get_the_ID()), 'square');
 
-                (!empty($image)) ? $activity_image = $activity_image[0] : $activity_image = get_template_directory_uri(
+                (!empty($activity_image)) ? $activity_image = $activity_image[0] : $activity_image = get_template_directory_uri(
                     ).'/images/default.jpg';
 
                 ?>
@@ -35,10 +34,13 @@
                             <img src="<?= $activity_image ?>" alt="<? the_title() ?> - <?= bloginfo('name') ?>">
                         </figure>
                         <div class="activity-article--content">
-                            <span class="activity-article--date"><?= date(
-                                    'd/m/Y - H.i',
-                                    strtotime($startdate)
-                                ) ?></span>
+                            <? if ($startdate): ?>
+                                <? if ($multiple_days): ?>
+                                    <span class="activity-article--date"><?= $startdate ?> tot <?= $enddate ?></span>
+                                <? else: ?>
+                                    <span class="activity-article--date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
+                                <? endif; ?>
+                            <? endif; ?>
                             <h3 class="activity-article--title"><? the_title() ?></h3>
                             <span class="button-arrowed">
                             Verder lezen

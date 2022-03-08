@@ -39,16 +39,11 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: 6rem;
   margin-bottom: 3rem;
+  font-size: 3rem;
   color: $text-color;
-  @include media-breakpoint-down(xl) {
-    line-height: normal;
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-  }
   @include media-breakpoint-down(sm) {
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
 
   strong {

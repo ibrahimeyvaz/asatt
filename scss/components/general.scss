@@ -43,11 +43,14 @@ th {
 }
 
 .main-wrapper {
-  padding: 3rem;
+  padding: 7.5rem;
   margin-bottom: 5rem;
   @include media-breakpoint-down(lg) {
     width: 100%;
-    margin: 0;
+    padding: 5rem;
+  }
+  @include media-breakpoint-down(md) {
+    padding: 2.5rem;
   }
 }
 
@@ -150,6 +153,7 @@ ol:not([class]) {
 .grecaptcha-badge {
   display: none !important;
 }
+
 .no-scroll {
   overflow: hidden;
   height: 100%;
@@ -161,4 +165,10 @@ ol:not([class]) {
   max-width: 80%;
   max-height: 80%;
   margin: 0;
+}
+
+.wp-block-spacer {
+  @include media-breakpoint-down(md) {
+    height: 5rem !important;
+  }
 }

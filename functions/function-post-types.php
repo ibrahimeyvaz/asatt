@@ -35,13 +35,14 @@ function activiteiten() {
         'label'                 => __( 'Activiteit', 'asatt' ),
         'description'           => __( 'Activiteiten', 'asatt' ),
         'labels'                => $labels,
-        'supports'              => array( 'title', 'editor', 'thumbnail' ),
+        'supports'              => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
         'taxonomies'            => array( 'category' ),
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 5,
+        'menu_icon'             => 'dashicons-universal-access',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
@@ -98,6 +99,7 @@ function oppurtunities() {
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 5,
+        'menu_icon'             => 'dashicons-image-filter',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
@@ -111,3 +113,60 @@ function oppurtunities() {
 
 }
 add_action( 'init', 'oppurtunities', 0 );
+
+// Register Custom Post Type
+function vacatures() {
+
+    $labels = array(
+        'name'                  => 'Vacatures',
+        'singular_name'         => 'Vacature',
+        'menu_name'             => 'Vacatures',
+        'name_admin_bar'        => 'Vacatures',
+        'archives'              => 'Item Archives',
+        'attributes'            => 'Item Attributes',
+        'parent_item_colon'     => 'Parent Item:',
+        'all_items'             => 'Alle vacatures',
+        'add_new_item'          => 'Add New Item',
+        'add_new'               => 'Nieuw',
+        'new_item'              => 'Nieuw',
+        'edit_item'             => 'Wijzigen',
+        'update_item'           => 'Updaten',
+        'view_item'             => 'Bekijken',
+        'view_items'            => 'Alles bekijken',
+        'search_items'          => 'Zoeken',
+        'not_found'             => 'Niet gevonden',
+        'not_found_in_trash'    => 'Niet gevonden',
+        'featured_image'        => 'Uitgelichte afbeelding',
+        'set_featured_image'    => 'Uitgelichte afbeelding',
+        'remove_featured_image' => 'Verwijderen',
+        'use_featured_image'    => 'Gebruiken',
+        'insert_into_item'      => 'Insert into item',
+        'uploaded_to_this_item' => 'Uploaded to this item',
+        'items_list'            => 'Items list',
+        'items_list_navigation' => 'Items list navigation',
+        'filter_items_list'     => 'Filter items list',
+    );
+    $args = array(
+        'label'                 => 'Vacature',
+        'description'           => 'Post Type Description',
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'editor', 'thumbnail' ),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 5,
+        'menu_icon'             => 'dashicons-archive',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => false,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'page',
+        'show_in_rest'          => true,
+    );
+    register_post_type( 'vacatures', $args );
+
+}
+add_action( 'init', 'vacatures', 0 );

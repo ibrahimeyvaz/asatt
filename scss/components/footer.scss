@@ -5,6 +5,12 @@
   font-weight: bold;
   text-transform: uppercase;
   overflow: hidden;
+  @include media-breakpoint-down(lg) {
+    font-size: 6rem;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: 2rem;
+  }
 
   .typewriter--text {
     color: $gray-light;
@@ -23,6 +29,8 @@
   background-blend-mode: multiply;
   background-color: $primary-color;
   margin-top: 10rem;
+  display: flex;
+  flex-flow: column;
   @include media-breakpoint-down(sm) {
     padding: 5rem 1.5rem 1.5rem 1.5rem;
   }
@@ -47,6 +55,15 @@
     @include boxShadowBig;
     padding: 5rem 10rem;
     border-radius: 50rem;
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+      margin-bottom: 2.5rem;
+      border-radius: 0;
+      padding: 2.5rem;
+    }
+    @include media-breakpoint-down(md){
+      transform: translateY(-50%);
+    }
 
     .footer-cta--intro {
       flex-basis: 100%;
@@ -80,6 +97,10 @@
     position: relative;
     z-index: 10;
     margin: -15rem 0 15rem 0;
+    @include media-breakpoint-down(lg) {
+      order: 1;
+      margin: 0;
+    }
 
     .footer-menu--title {
       color: white;
@@ -139,20 +160,29 @@
   .main-footer--mid {
     text-align: center;
     margin-bottom: 20rem;
-    .information-list{
+    @include media-breakpoint-down(lg) {
+      order: 0;
+      margin-bottom: 10rem;
+    }
+
+    .information-list {
       display: flex;
       justify-content: center;
       margin-bottom: 5rem;
-      li{
+
+      li {
         margin-right: 2rem;
         color: rgba(white, .9);
-        a{
+
+        a {
           color: rgba(white, .9);
-          &:hover, &:focus{
+
+          &:hover, &:focus {
             color: white;
           }
         }
-        &:last-child{
+
+        &:last-child {
           margin-right: 0;
         }
       }
@@ -170,9 +200,13 @@
       display: flex;
       font-size: 3rem;
       justify-content: center;
+      @include media-breakpoint-down(sm) {
+        font-size: 2rem;
+      }
 
       li {
         margin-right: 2rem;
+
         &:last-child {
           margin: 0;
         }
@@ -207,6 +241,9 @@
     color: rgba(white, .8);
     position: relative;
     z-index: 10;
+    @include media-breakpoint-down(lg) {
+      order: 1;
+    }
     @include media-breakpoint-down(sm) {
       margin-top: 5rem;
     }

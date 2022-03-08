@@ -52,6 +52,7 @@
           display: none;
         }
       }
+
       &.menu-item-has-children {
         position: relative;
 
@@ -83,7 +84,8 @@
           .menu-item {
             padding: 0;
             border: 0;
-            &:after{
+
+            &:after {
               display: none;
             }
 
@@ -119,6 +121,35 @@
             transform: translateY(0);
           }
         }
+      }
+
+      &.menu-item-184 {
+        &.current-menu-item {
+          a {
+            color: $primary-color-dark;
+            &:after{
+              display: none;
+            }
+          }
+        }
+
+        a {
+          background-color: white;
+          color: $primary-color;
+          @include boxShadow;
+          font-weight: bold;
+          &:after{
+            display: none;
+          }
+
+          &:hover, &:focus {
+            color: $primary-color-dark;
+          }
+        }
+      }
+
+      &:nth-last-child(2):after {
+        display: none;
       }
     }
   }

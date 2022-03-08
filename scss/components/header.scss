@@ -9,6 +9,9 @@
   flex-flow: wrap;
   padding: 4rem;
   z-index: 9998;
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
   @include media-breakpoint-down(sm) {
     padding: 2rem;
   }
@@ -37,7 +40,7 @@
     }
 
     &:hover {
-      .main-branding--logo{
+      .main-branding--logo {
         transform: translateY(-1.5rem);
       }
 
@@ -141,4 +144,8 @@
 
 .no-scroll .main-header--page:after {
   transform: translateY(-100%);
+}
+
+.mobile-menu {
+  display: none;
 }

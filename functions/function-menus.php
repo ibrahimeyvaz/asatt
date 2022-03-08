@@ -12,7 +12,8 @@ if (function_exists('register_nav_menu')) {
     register_nav_menus(
         array(
             'primary' => 'Hoofdmenu',
-            'secondary' => 'Verborgenmenu'
+            'secondary' => 'Verborgenmenu',
+            'mobile' => 'Mobiel'
         )
     );
 }
