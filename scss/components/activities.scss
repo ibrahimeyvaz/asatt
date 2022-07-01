@@ -38,6 +38,13 @@
           color: white;
           border-radius: 3rem;
           min-width: 15rem;
+
+          &.expired {
+            bottom: 1rem;
+            top: auto;
+            background-color: $red;
+            min-width: 0;
+          }
         }
       }
 
@@ -81,6 +88,10 @@
           }
         }
       }
+    }
+
+    &.activity--expired {
+      filter: grayscale(100%);
     }
   }
 

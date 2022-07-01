@@ -6,7 +6,7 @@ function featured_image($post)
     /** @var TYPE_NAME $page_visual */
 
     global $post;
-    $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->id), 'full');
+    $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full');
     global
     $page_visual;
     if (!empty($image)) {

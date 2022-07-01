@@ -18,7 +18,7 @@ include(locate_template('includes/globals.php', false, false));
         <div class="footer-cta--action">
             <a class="button-arrowed" href="<?= site_url() ?>/inschrijving" ">Take a seat
             <svg class="arrow-icon" width="32" height="32" viewBox="0 0 32 32">
-                <g fill="none" stroke="#2567ce" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                <g fill="none" stroke="#3A64AF" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
                     <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
                     <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
                 </g>
@@ -32,11 +32,11 @@ include(locate_template('includes/globals.php', false, false));
     </div>
     <div class="main-footer--navigation">
         <div class="row no-gutters justify-content-center">
-            <div class="col-xs-12 col-md-auto pl-md-5 pr-md-5">
+            <div class="col-xs-6 col-md-auto pl-md-5 pr-md-5">
                 <h3 class="footer-menu--title">Snelmenu</h3>
                 <? dynamic_sidebar('footermenu') ?>
             </div>
-            <div class="col-xs-12 col-md-auto pl-md-5 pr-md-5">
+            <div class="col-xs-6 col-md-auto pl-md-5 pr-md-5">
                 <h3 class="footer-menu--title">Links</h3>
                 <? dynamic_sidebar('footermenu2') ?>
             </div>
@@ -66,16 +66,6 @@ include(locate_template('includes/globals.php', false, false));
                                 <a href="<? the_permalink() ?>">
                                     <span class="activity-item--title">
                                         <? the_title() ?>
-                                    </span>
-                                    <br>
-                                    <span class="activity-item--date-category"><?= date(
-                                            'd/m/Y',
-                                            strtotime($startdate)
-                                        ) ?>
-                                        <? if ($categories): ?>
-                                            —
-                                            <?= $categories[0]->name ?>
-                                        <? endif; ?>
                                     </span>
                                 </a>
                             </li>
@@ -113,7 +103,7 @@ include(locate_template('includes/globals.php', false, false));
     </div>
     <div class="main-footer--mid">
         <a class="footer-branding" href="<?= home_url() ?>">
-            <img src="<?= get_template_directory_uri() ?>/images/asatt-footer.svg" alt="<?= bloginfo('name') ?>">
+            <img src="<?= get_template_directory_uri() ?>/images/asatt-logo.svg" alt="<?= bloginfo('name') ?>">
         </a>
         <ul class="information-list">
             <li>

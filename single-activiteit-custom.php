@@ -127,7 +127,7 @@ include locate_template('includes/globals.php', false, true); ?>
                             "elementType": "all",
                             "stylers": [
                                 {
-                                    "color": "#2567ce"
+                                    "color": "#3A64AF"
                                 },
                                 {
                                     "visibility": "on"

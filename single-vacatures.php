@@ -5,6 +5,7 @@ $location = get_field('address_opportunity');
 $contract_type = get_field('contracttype');
 $contract_term = get_field('contractduur');
 $contract_hours = get_field('uren');
+$form = get_field('formulier');
 
 if ($location):
     $address = $location['street_name'].' '.$location['street_number'].', '.$location['post_code'].' '.$location['city'];
@@ -127,7 +128,7 @@ include locate_template('includes/globals.php', false, true); ?>
                             "elementType": "all",
                             "stylers": [
                                 {
-                                    "color": "#2567ce"
+                                    "color": "#3A64AF"
                                 },
                                 {
                                     "visibility": "on"
@@ -177,6 +178,9 @@ include locate_template('includes/globals.php', false, true); ?>
                 <figure class="page-visual">
                     <img width="800" height="800" loading="lazy" src="<?=  $page_visual  ?>" alt="<? the_title()?>">
                 </figure>
+                <? if ($form): ?>
+                    <?= do_shortcode($form) ?>
+                <? endif; ?>
             </aside>
         </div>
     </div>

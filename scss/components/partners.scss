@@ -27,6 +27,7 @@
       display: block;
       margin: 0 auto;
       @include transition;
+      object-fit: contain;
 
       &[src*="mars"] {
         height: 3rem;
@@ -41,12 +42,10 @@
 
 .partner-grid {
   display: grid;
-  grid-template-columns: auto auto auto;
-  @include media-breakpoint-down(lg) {
-    grid-template-columns: auto auto;
-  }
+  border-top: 1px solid $gray-light;
+  border-left: 1px solid $gray-light;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 3fr));
   @include media-breakpoint-down(md) {
-    grid-template-columns: auto;
     margin-bottom: 5rem;
   }
 
@@ -55,9 +54,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $gray-light;
-    border-bottom: 0;
-    border-right: 0;
+    border-bottom: 1px solid $gray-light;
+    border-right: 1px solid $gray-light;
     @include transition;
 
     .grid-block--visual {
@@ -66,6 +64,7 @@
       filter: grayscale(100%) opacity(.5);
       margin: 0 auto;
       @include transition;
+      object-fit: contain;
     }
 
     &:hover, &:focus {
@@ -74,15 +73,6 @@
       .grid-block--visual {
         filter: none;
       }
-    }
-
-    &:last-of-type {
-      border-right: 1px solid $gray-light;
-      border-bottom: 1px solid $gray-light;
-    }
-
-    &:nth-of-type(5), &:nth-of-type(6) {
-      border-bottom: 1px solid $gray-light;
     }
   }
 }

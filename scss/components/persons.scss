@@ -1,25 +1,24 @@
 .persons {
   .person-list {
     display: grid;
-    grid-template-columns: auto auto auto;
-    @include media-breakpoint-down(xl) {
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 3fr));
+    border-top: 1px solid $gray-light;
+    border-left: 1px solid $gray-light;
+ /*   @include media-breakpoint-down(xl) {
       grid-template-columns: auto auto;
     }
     @include media-breakpoint-down(md) {
       grid-template-columns: auto;
-    }
+    }*/
   }
 
   .person-item {
     display: flex;
     flex-flow: wrap;
     justify-content: center;
+    border-bottom: 1px solid $gray-light;
     border-right: 1px solid $gray-light;
-    @include media-breakpoint-down(md) {
-      border: 0 !important;
-    }
     @include transition;
-    margin-bottom: 4rem;
 
     .person-item--visual {
       height: 20rem;
@@ -69,19 +68,11 @@
       }
     }
 
-    &:nth-child(3n) {
-      border-right: 0;
-      @include media-breakpoint-down(xl) {
-        border-right: 1px solid $gray-light;
-      }
-    }
-
     &:hover, &:focus {
       background-color: $off-white;
 
       .person-item--visual {
         transform: translateY(-1rem);
-        @include boxShadow;
       }
     }
   }

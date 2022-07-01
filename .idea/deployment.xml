@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Reign @ Ploi" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Reign @ Ploi" confirmBeforeUploading="false" autoUploadExternalChanges="true">
+    <option name="confirmBeforeUploading" value="false" />
     <serverData>
       <paths name="Reign @ Ploi">
         <serverdata>
           <mappings>
-            <mapping deploy="/www.asatt.eu/public/wp-content/themes/asatt" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/wp-content/themes/asatt" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

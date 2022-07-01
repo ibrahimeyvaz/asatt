@@ -53,7 +53,7 @@
                         <span class="button-arrowed">
                             Solliciteer hier!
                             <svg class="arrow-icon" width="32" height="32" viewBox="0 0 32 32">
-                              <g fill="none" stroke="#2567ce" stroke-width="1.5" stroke-linejoin="round"
+                              <g fill="none" stroke="#3A64AF" stroke-width="1.5" stroke-linejoin="round"
                                  stroke-miterlimit="10">
                                 <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
                                 <path class="arrow-icon--arrow"

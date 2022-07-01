@@ -91,7 +91,6 @@
         </div>
         <img class="main-branding--logo" width="150" height="30" loading="lazy" src="<?= get_template_directory_uri() ?>/images/asatt-logo.svg"
              alt="<?= bloginfo('name') ?>">
-        <img class="main-branding--text" src="<?= get_template_directory_uri() ?>/images/asatt.svg">
     </a>
     <div class="main-header-right">
         <nav class="main-navigation">

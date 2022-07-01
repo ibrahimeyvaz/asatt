@@ -31,15 +31,15 @@ include locate_template('includes/globals.php', false, true); ?>
             </h1>
             <? if ($startdate): ?>
             <div class="hero-content--activity">
-                <? if($categories): ?>
-                <span class="activity-category"><?= $category_name ?></span>
+                <? if ($categories): ?>
+                    <span class="activity-category"><?= $category_name ?></span>
                 <? endif; ?>
 
-                    <? if ($multiple_days): ?>
-                        <span class="activity-article--date"><?= $startdate ?> tot <?= $enddate ?></span>
-                    <? else: ?>
-                        <span class="activity-article--date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
-                    <? endif; ?>
+                <? if ($multiple_days): ?>
+                    <span class="activity-article--date"><?= $startdate ?>   <?= ($enddate) ? 'tot '.$enddate : '' ?></span>
+                <? else: ?>
+                    <span class="activity-article--date"><?= $startdate ?> – <?= $starthour ?> <?= ($endhour) ? 'tot '.$endhour : '' ?></span>
+                <? endif; ?>
 
                 <? if ($locality === true): ?>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -54,7 +54,7 @@ include locate_template('includes/globals.php', false, true); ?>
 </section>
 <main class="main-wrapper">
     <? if ($locality === true): ?>
-    <div class="row">
+        <div class="row">
 
             <script>
                 function initMap() {
@@ -130,7 +130,7 @@ include locate_template('includes/globals.php', false, true); ?>
                             "elementType": "all",
                             "stylers": [
                                 {
-                                    "color": "#2567ce"
+                                    "color": "#3A64AF"
                                 },
                                 {
                                     "visibility": "on"
@@ -169,19 +169,21 @@ include locate_template('includes/globals.php', false, true); ?>
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3nCLZ7ZGxUrmhaI84EfrQTEIecJ_7svI&callback=initMap&language=nl"></script>
 
 
-    </div>
+        </div>
     <? endif; ?>
     <div class="row justify-content-between">
         <article class="col-xl-6">
             <? the_content() ?>
-            <figure id="map"
-                    class="activity-map" <?php if ($is_preview): ?> style="width:100%; height: 400px" <? endif ?>></figure>
+            <? if ($locality): ?>
+                <figure id="map"
+                        class="activity-map" <?php if ($is_preview): ?> style="width:100%; height: 400px" <? endif ?>></figure>
+            <? endif; ?>
         </article>
         <aside class="col-xl-5">
             <figure class="page-visual">
-                <img width="800" height="800" loading="lazy" src="<?=  $page_visual  ?>" alt="<? the_title()?>">
+                <img width="800" height="800" loading="lazy" src="<?= $page_visual ?>" alt="<? the_title() ?>">
             </figure>
-<!--            --><?//= do_shortcode($form) ?>
+            <?= do_shortcode($form) ?>
         </aside>
     </div>
 </main>

@@ -10,10 +10,12 @@ $locality = get_field('fysiek_of_online');
 $location = get_field('adres');
 $form = get_field('formulier');
 $categories = get_the_category();
-$category_name = $categories[0]->name;
+if($categories):
+    $category_name = $categories[0]->name;
+endif;
 
 if ($location):
-    $address = $location['street_name'].' '.$location['street_number'].', '.$location['post_code'].' '.$location['city'];
+    $address = $location['street_name'].' '.$location['street_number'].' '.$location['post_code'].' '.$location['city'];
     $address_url = 'https://www.google.com/maps/search/?api=1&query='.$location['street_name'].'+'.$location['street_number'].'+'.$location['post_code'].'+'.$location['city'];
 endif;
 
@@ -30,13 +32,15 @@ include locate_template('includes/globals.php', false, true); ?>
                 <? the_title() ?>
             </h1>
             <div class="hero-content--activity">
-                <span class="activity-category"><?= $category_name ?></span>
-                <? if ($startdate): ?>
-                    <? if ($multiple_days): ?>
-                        <span class="activity-date"><?= $startdate ?> tot <?= $enddate ?></span>
-                    <? else: ?>
-                        <span class="activity-date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
-                    <? endif; ?>
+                <?  if($categories): ?>
+                    <span class="activity-article--category"><?= $category_name ?></span>
+                <? endif; ?>
+                   <? if ($startdate): ?>
+                        <? if ($multiple_days): ?>
+                            <span class="activity-article--date"><?= $startdate ?>   <?= ($enddate) ? 'tot '.$enddate : '' ?></span>
+                        <? else: ?>
+                            <span class="activity-article--date"><?= $startdate ?> – <?= $starthour ?> <?= ($endhour) ? 'tot '.$endhour : '' ?></span>
+                        <? endif; ?>
                     <? if ($locality === true): ?>
                         &nbsp;&nbsp;|&nbsp;&nbsp;
                         <a href="<?= $address_url ?>" target="_blank" rel="noreferrer">
@@ -125,7 +129,7 @@ include locate_template('includes/globals.php', false, true); ?>
                             "elementType": "all",
                             "stylers": [
                                 {
-                                    "color": "#2567ce"
+                                    "color": "#3A64AF"
                                 },
                                 {
                                     "visibility": "on"

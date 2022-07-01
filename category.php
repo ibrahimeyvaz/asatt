@@ -7,10 +7,11 @@
         $args = array(
             'post_type' => 'activiteit',
             'post_status' => 'publish',
+            'meta_key' => 'event_start_date',
+            'orderby' => 'meta_value_num',
             'cat' => get_query_var('cat'),
             'order' => 'DESC',
-            'posts_per_page' => 6,
-            'paged' => $paged,
+            'posts_per_page' => -1,
         );
         $query = new WP_Query($args);
         if ($query->have_posts()) :
@@ -23,6 +24,8 @@
                 $multiple_days = get_field('meerdaags', get_the_ID());
                 $categories = get_the_category();
                 $activity_image = wp_get_attachment_image_src(get_post_thumbnail_id( get_the_ID()), 'square');
+                $startDateConverted = DateTime::createFromFormat('d/m/Y', $startdate);
+                $date_now = new DateTime();
 
                 (!empty($activity_image)) ? $activity_image = $activity_image[0] : $activity_image = get_template_directory_uri(
                     ).'/images/default.jpg';
@@ -31,21 +34,29 @@
                 <article class="activity-article">
                     <a href="<? the_permalink() ?>">
                         <figure class="activity-article--visual">
-                            <img src="<?= $activity_image ?>" alt="<? the_title() ?> - <?= bloginfo('name') ?>">
+                            <?
+                            if ($startDateConverted):
+                                if($startDateConverted < $date_now):
+                                    echo '<span class="activity-article--category expired">Afgelopen</span>';
+                                endif;
+                            endif;
+                            ?>
+                            <img loading="lazy" width="300" height="300" src="<?= $activity_image ?>"
+                                 alt="<? the_title() ?> - <?= bloginfo('name') ?>">
                         </figure>
                         <div class="activity-article--content">
                             <? if ($startdate): ?>
                                 <? if ($multiple_days): ?>
-                                    <span class="activity-article--date"><?= $startdate ?> tot <?= $enddate ?></span>
+                                    <span class="activity-article--date"><?= $startdate ?>   <?= ($enddate) ? 'tot '.$enddate : '' ?></span>
                                 <? else: ?>
-                                    <span class="activity-article--date"><?= $startdate ?> – <?= $starthour ?> tot <?= $endhour ?></span>
+                                    <span class="activity-article--date"><?= $startdate ?> – <?= $starthour ?> <?= ($endhour) ? 'tot '.$endhour : '' ?></span>
                                 <? endif; ?>
                             <? endif; ?>
                             <h3 class="activity-article--title"><? the_title() ?></h3>
                             <span class="button-arrowed">
                             Verder lezen
                             <svg class="arrow-icon" width="32" height="32" viewBox="0 0 32 32">
-                              <g fill="none" stroke="#2567ce" stroke-width="1.5" stroke-linejoin="round"
+                              <g fill="none" stroke="#3A64AF" stroke-width="1.5" stroke-linejoin="round"
                                  stroke-miterlimit="10">
                                 <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
                                 <path class="arrow-icon--arrow"
@@ -57,9 +68,6 @@
                     </a>
                 </article>
             <? endwhile;
-
-            $total_pages = $query->max_num_pages;
-            ($total_pages > 1) ? $current_page = max(1, get_query_var('paged')) : '';
 
             wp_reset_postdata(); endif;
         ?>
